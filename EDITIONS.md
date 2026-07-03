@@ -1,3 +1,9 @@
+<div align="center">
+
+<a href="EDITIONS.md"><img src="assets/lang/en-active.svg" height="40" alt="English"/></a>&nbsp;<a href="EDITIONS.de.md"><img src="assets/lang/de.svg" height="40" alt="Deutsch"/></a>&nbsp;<a href="EDITIONS.ar.md"><img src="assets/lang/ar.svg" height="40" alt="العربية"/></a>
+
+</div>
+
 # Stock Manager Pro — Editions
 
 Stock Manager Pro is available in two editions.

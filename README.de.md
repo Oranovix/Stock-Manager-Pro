@@ -1,10 +1,8 @@
 <div align="center">
 
-[![English](https://img.shields.io/badge/English-9CA3AF?style=for-the-badge)](README.md)&nbsp;[![Deutsch](https://img.shields.io/badge/Deutsch-2563EB?style=for-the-badge)](README.de.md)&nbsp;[![العربية](https://img.shields.io/badge/العربية-9CA3AF?style=for-the-badge)](README.ar.md)
+<a href="README.md"><img src="assets/lang/en.svg" height="40" alt="English"/></a>&nbsp;<a href="README.de.md"><img src="assets/lang/de-active.svg" height="40" alt="Deutsch"/></a>&nbsp;<a href="README.ar.md"><img src="assets/lang/ar.svg" height="40" alt="العربية"/></a>
 
-<img src="assets/icon_cube.png" alt="Stock Manager Pro" width="80"/>
-
-# Stock Manager Pro
+<img src="https://capsule-render.vercel.app/api?type=waving&color=0:0A0A0A,55:047857,100:10B981&height=190&section=header&text=Stock%20Manager%20Pro&fontSize=52&fontColor=ffffff&animation=fadeIn&fontAlignY=46" width="100%" alt="Stock Manager Pro — professionelle Desktop-Bestandsverwaltung für Windows"/>
 
 **Professionelle Desktop-Bestandsverwaltung für Windows**
 
