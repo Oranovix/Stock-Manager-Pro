@@ -7,6 +7,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.7.8] - 2026-07-03
+
+### Fixed
+- **"Initialize as Replica" now persists across restarts** — a PC set as a cloud replica stays a replica after the app is reopened, instead of reverting.
+- Clearer diagnostics when a product can't be deleted because history still references it: the health check now names the conflicting tables.
+
+## [2.7.7] - 2026-07-03
+
+### Fixed
+- The Sales **"Items Sold" KPI** always showed 0 — it now counts correctly.
+
+### Improved
+- **Complete EN / DE / AR translation coverage** — filled 58 missing keys and replaced 61 hardcoded strings, so every screen is fully localised.
+- Faster analytics dashboard — aggregates are cached and invalidated on write instead of recomputed every refresh.
+
 ## [2.7.6] - 2026-07-03
 
 ### Added

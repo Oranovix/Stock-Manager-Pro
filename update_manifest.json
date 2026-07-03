@@ -1,7 +1,7 @@
 {
-  "version": "2.7.6",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.7.6/StockManagerPro-2.7.6-setup.exe",
-  "release_notes": "v2.7.6 \u2014 see changelog for details",
+  "version": "2.7.8",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.7.8/StockManagerPro-2.7.8-setup.exe",
+  "release_notes": "v2.7.8 — see changelog for details",
   "release_date": "2026-07-03",
-  "checksum_sha256": "882533d16326c1bddc8d6979711bc06f796588187b04f952bf880c6e68d13425"
+  "checksum_sha256": "879a9138d188164ae8dc47f7d6b0e489d6770d0501e9404b62b3b04836fb2ccc"
 }
