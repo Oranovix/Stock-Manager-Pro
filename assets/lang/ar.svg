@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="150" height="40" viewBox="0 0 150 40" role="img" aria-label="العربية">
   <rect x="0.75" y="0.75" width="148.5" height="38.5" rx="19.25" fill="#141414" stroke="#2A2A2A" stroke-width="1.5"/>
   <g stroke="#6B7280" stroke-width="1.4" fill="none">
-    <circle cx="128" cy="20" r="7.5"/>
-    <ellipse cx="128" cy="20" rx="3.2" ry="7.5"/>
-    <line x1="120.5" y1="20" x2="135.5" y2="20"/>
+    <circle cx="22" cy="20" r="7.5"/>
+    <ellipse cx="22" cy="20" rx="3.2" ry="7.5"/>
+    <line x1="14.5" y1="20" x2="29.5" y2="20"/>
   </g>
-  <text x="110" y="26" text-anchor="end" direction="rtl" font-family="'Segoe UI','Tahoma',sans-serif" font-size="15" font-weight="600" fill="#9CA3AF">العربية</text>
+  <text x="40" y="26" font-family="'Segoe UI','Tahoma',sans-serif" font-size="15" font-weight="600" fill="#9CA3AF">العربية</text>
 </svg>

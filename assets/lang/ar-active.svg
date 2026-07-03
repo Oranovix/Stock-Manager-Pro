@@ -7,9 +7,9 @@
   </defs>
   <rect x="0.5" y="0.5" width="149" height="39" rx="19.5" fill="url(#g)"/>
   <g stroke="#FFFFFF" stroke-width="1.4" fill="none" opacity="0.95">
-    <circle cx="128" cy="20" r="7.5"/>
-    <ellipse cx="128" cy="20" rx="3.2" ry="7.5"/>
-    <line x1="120.5" y1="20" x2="135.5" y2="20"/>
+    <circle cx="22" cy="20" r="7.5"/>
+    <ellipse cx="22" cy="20" rx="3.2" ry="7.5"/>
+    <line x1="14.5" y1="20" x2="29.5" y2="20"/>
   </g>
-  <text x="110" y="26" text-anchor="end" direction="rtl" font-family="'Segoe UI','Tahoma',sans-serif" font-size="15" font-weight="600" fill="#FFFFFF">العربية</text>
+  <text x="40" y="26" font-family="'Segoe UI','Tahoma',sans-serif" font-size="15" font-weight="600" fill="#FFFFFF">العربية</text>
 </svg>
