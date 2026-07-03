@@ -9,27 +9,49 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [2.7.6] - 2026-07-03
 
+### Added
+- **One-click error report** — Admin → About now bundles logs and version info into a single zip for support. It contains no business data or secrets.
+
+### Improved
+- **No more UI freezes** — matrix pages, zoom, and the analytics dashboard now load in the background, and the last synchronous queries moved off the UI thread, so the app stays responsive on large datasets.
+
+### Fixed
+- Replica-mode PCs no longer freeze on the splash screen at startup.
+- Phone barcode-label export restored.
 
 ## [2.7.5] - 2026-07-02
 
+### Fixed
+- Switching a PC to a cloud replica now pulls and verifies the shared data first, reports an honest sync status, and refreshes automatically once syncing completes.
+- Replica startup no longer hangs on the splash screen.
 
 ## [2.7.4] - 2026-07-02
 
+### Fixed
+- Stability and release-pipeline reliability fixes.
 
 ## [2.7.3] - 2026-07-02
 
+### Fixed
+- Cloud push no longer aborts midway when two phone models share the same name.
 
 ## [2.7.2] - 2026-07-02
 
+### Added
+- **Mirror push** — make the shared cloud database an exact copy of the current PC in one step.
 
 ## [2.7.1] - 2026-07-02
 
+### Fixed
+- Maintenance and packaging fixes.
 
 ## [2.7.0] - 2026-07-02
 
+### Improved
+- **Faster everywhere** — lazy page loading, batched queries, debounced searches, and roughly 2.5× faster barcode-PDF generation make startup and navigation noticeably quicker.
 
-## [2.6.7] - 2026-07-01
-
+### Fixed
+- Phone barcode scanning restored.
 
 ## [2.6.7] - 2026-07-01
 
