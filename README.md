@@ -1,5 +1,7 @@
 <div align="center">
 
+[![English](https://img.shields.io/badge/English-2563EB?style=for-the-badge)](README.md)&nbsp;[![Deutsch](https://img.shields.io/badge/Deutsch-9CA3AF?style=for-the-badge)](README.de.md)&nbsp;[![العربية](https://img.shields.io/badge/العربية-9CA3AF?style=for-the-badge)](README.ar.md)
+
 <img src="assets/icon_cube.png" alt="Stock Manager Pro" width="80"/>
 
 # Stock Manager Pro
