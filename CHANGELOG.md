@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.8.1] - 2026-07-06
+
+
+### Fixed — Startup crashed in cloud mode: `FOREIGN KEY constraint failed` during the devices migration
+- On a cloud database that reached schema V24 before category seeding existed, `device_categories` is empty — the V25 phones-to-devices backfill then violates its foreign key and aborts startup. The cloud always enforces foreign keys (a local DB by default does not), which is why this only hit cloud-connected PCs. The V25 migration now seeds the device categories itself before backfilling, so it completes on any V24 database regardless of how it got there.
+
 ## [2.8.0] - 2026-07-06
 
 
