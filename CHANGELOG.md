@@ -7,66 +7,131 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.7.9] - 2026-07-06
+
+
+### Added — Devices module: full inventory for tablets, laptops, watches & more (Pro)
+- New **Devices** area with per-category dual-table pages (unit grid + detail) that mirror the proven phones workflow — for Tablets, Laptops, Earbuds, Watches, Consoles and Speakers, each with its own line icon in the sidebar.
+- **Schema-driven add/edit dialogs**: every category shows exactly its own fields with the right dropdowns (including watch size), driven by a single per-category field schema.
+- **Combo (select-or-type) fields** for brand, model, color, CPU, screen and GPU that learn from the data already in your shop — pick an existing value or type a new one.
+- Professional detail presentation: status badges, colour swatches, battery/condition badges, and consistent currency/battery formatting.
+- Full device life-cycle: device movements appear in the **Transactions** view, every category has a **sold-devices history**, a **scan-to-sell** popup opens straight from the header search, and **barcode labels** can be exported and assigned.
+- Under the hood: schema v23 → v25 migration with seeded device categories, an index on device transactions, and a complete model/repository/service layer covered by backend tests.
+
+### Added — Part Types page (Pro)
+- Dedicated **Part Types** page with dual-table browse and its own sidebar entry; the tab hosts the real per-category matrix behind a category header, with working zoom.
+- **Icons for categories and part types**: a bundled SVG icon set with a picker dialog (schema v26).
+- New Pro tabs for part types: **Sold History** and **Direct Labels**.
+
+### Added — Free/Pro editions with offline licensing
+- The app now runs as **Free** or **Pro**. Pro features show a clear upgrade prompt with a teaser preview instead of being silently absent.
+- **Offline activation** with signed license keys bound to a machine fingerprint (grouped customer ids activate correctly; matching ignores case and hyphens). Activation applies live — no restart needed.
+- The footer shows an **edition badge** and, during the trial, a countdown that ticks hourly.
+- Trial state is stored redundantly (file + registry, reconciled) and fails closed on a corrupt marker.
+- Gated Pro surfaces: the 11 Pro PDF reports, Pro write-actions (edit/delete/send/remove), the admin suppliers panel, and device power features.
+
+### Changed — Complete UI redesign (header, sidebar, footer, themes)
+- A **cohesive SVG line-icon set replaces emoji everywhere** — sidebar, header, admin dialog, category nav and zoom control — recoloured live for active state and theme.
+- **Sidebar**: grouped into five labelled sections (Inventory / Sales / Purchasing / Reports / System); the hamburger collapses it to an icon-only rail with tooltips; thin scrollbar.
+- **Header**: shows the current page name as breadcrumb context, plus a leading search glyph and tightened search field.
+- **Footer**: status groups segmented IDE-style with subtle dividers; version/time now readable in light mode.
+- **Themes**: five new accent families (Ocean, Violet, Amber, Rose, Slate), each in dark and light, plus a new **Appearance** settings panel with live theme preview cards. All chrome icons recolour instantly on theme change.
+
+### Fixed — Startup no longer crashes when the cloud is unreachable
+- When the cloud host can't be reached, the app degrades to the offline local database and keeps working instead of crashing at startup.
+
+### Changed — Licensing & translations
+- Source license switched to a proprietary Oranovix license (supersedes the PolyForm Noncommercial notice from 2.7.6).
+- Remaining hardcoded UI strings routed through translations with real EN/DE/AR coverage, protected by a guard test so new hardcoded strings fail CI.
+
+### Changed — Release & CI pipeline
+- Installers, the update manifest and the changelog are now published to the public distribution repo, so installed apps keep updating regardless of the source repository's visibility.
+- The UI smoke gate no longer fails on a library shutdown crash that occurred after all tests had already passed.
+
 ## [2.7.8] - 2026-07-03
 
-### Fixed
-- **"Initialize as Replica" now persists across restarts** — a PC set as a cloud replica stays a replica after the app is reopened, instead of reverting.
-- Clearer diagnostics when a product can't be deleted because history still references it: the health check now names the conflicting tables.
+### Fixed — "Initialize as Replica" didn't survive an app restart
+- A PC set up as a replica silently reverted to its local database on the next launch. The replica switch is now persisted, so the PC reconnects to the shared cloud database after every restart.
+
+### Changed
+- The startup health check now names the exact tables with foreign-key violations instead of a generic warning.
+- Public-safe LICENSE text and a new editions page.
 
 ## [2.7.7] - 2026-07-03
 
-### Fixed
-- The Sales **"Items Sold" KPI** always showed 0 — it now counts correctly.
+### Fixed — Sales "Items Sold" KPI always showed 0
+- The KPI now counts sold items correctly.
 
-### Improved
-- **Complete EN / DE / AR translation coverage** — filled 58 missing keys and replaced 61 hardcoded strings, so every screen is fully localised.
-- Faster analytics dashboard — aggregates are cached and invalidated on write instead of recomputed every refresh.
+### Added — CI gate: every page and dialog must construct
+- A UI construction smoke test builds the entire UI in CI, catching the class of regression (broken pages/dialogs after a merge) that previously reached users.
+
+### Changed — Faster dashboard, complete translations
+- Dashboard aggregates are cached with write invalidation, so the dashboard opens noticeably faster.
+- Translation coverage completed: 58 missing keys added and 61 hardcoded strings translated (EN/DE/AR).
 
 ## [2.7.6] - 2026-07-03
 
-### Added
-- **One-click error report** — Admin → About now bundles logs and version info into a single zip for support. It contains no business data or secrets.
+### Added — One-click error report bundle
+- Logs and diagnostics can be bundled into a single file to send along when something goes wrong.
 
-### Improved
-- **No more UI freezes** — matrix pages, zoom, and the analytics dashboard now load in the background, and the last synchronous queries moved off the UI thread, so the app stays responsive on large datasets.
+### Fixed — Replica startup froze at 2%
+- Building the cloud connection is now time-bounded; the app continues starting and uses the fallback connection until the replica is ready.
 
-### Fixed
-- Replica-mode PCs no longer freeze on the splash screen at startup.
-- Phone barcode-label export restored.
+### Fixed — Phone label export restored
+- The phone label export dialog was lost in the v2.6.7 integration merge and is back.
+
+### Changed — Performance and licensing
+- Matrix pages and the zoom control no longer freeze the UI (async matrix queries; sampled + debounced zoom); the last synchronous page queries moved to the worker pool.
+- Future versions licensed under PolyForm Noncommercial 1.0.0.
 
 ## [2.7.5] - 2026-07-02
 
-### Fixed
-- Switching a PC to a cloud replica now pulls and verifies the shared data first, reports an honest sync status, and refreshes automatically once syncing completes.
-- Replica startup no longer hangs on the splash screen.
+### Fixed — Cloud replica switching is now trustworthy
+- Switching to replica performs a real pull and verifies the data actually arrived; the sync indicator reports status honestly; views auto-refresh after a sync.
+- After a mirror push the app now offers to switch the PC to replica mode — previously the pushing PC stayed primary and never saw later cloud changes.
+- Replica startup no longer freezes on the splash screen (the startup cloud sync is time-bounded).
 
 ## [2.7.4] - 2026-07-02
 
-### Fixed
-- Stability and release-pipeline reliability fixes.
+- Re-release of 2.7.3 to recover a failed release-pipeline run — no application changes.
 
 ## [2.7.3] - 2026-07-02
 
-### Fixed
-- Cloud push no longer aborts midway when two phone models share the same name.
+### Fixed — Cloud push aborted mid-sync on duplicate phone model names
+- Pushing to the cloud failed on the phone models unique-name constraint and aborted partway through. The push now handles already-existing names and completes.
 
 ## [2.7.2] - 2026-07-02
 
-### Added
-- **Mirror push** — make the shared cloud database an exact copy of the current PC in one step.
+- Ships the 2.7.1 changes (that release run failed before publishing). The release pipeline was hardened: a PR-mergeability race was fixed and main is now merged back into dev after each release.
 
 ## [2.7.1] - 2026-07-02
 
-### Fixed
-- Maintenance and packaging fixes.
+### Added — Mirror push: make the cloud an exact copy of this PC
+- A deliberate, confirmed alternative to the safe merge push for when the cloud should be reset to exactly this PC's data.
+- Note: the 2.7.1 release run failed before publishing — these changes first shipped with 2.7.2.
 
 ## [2.7.0] - 2026-07-02
 
-### Improved
-- **Faster everywhere** — lazy page loading, batched queries, debounced searches, and roughly 2.5× faster barcode-PDF generation make startup and navigation noticeably quicker.
+### Changed — Major performance pass (three phases)
+- Barcode PDF generation ~2.5× faster; searches debounced; page loads deferred.
+- Inventory action buttons build lazily and hidden pages defer their restyles.
+- Lazy page imports and batched N+1 query patterns cut startup and navigation time.
 
-### Fixed
-- Phone barcode scanning restored.
+### Fixed — Phone barcode scanning restored
+- Phone barcode scanning was lost in the v2.6.7 integration merge and is back.
+
+## [2.6.9] - 2026-07-01
+
+### Fixed — App crashed on startup
+- A missing translation import in the sync indicator crashed the app at launch.
+
+### Changed
+- Installer wizard images now show the correct version automatically; README screenshots refreshed with a populated demo dataset.
+
+## [2.6.8] - 2026-07-01
+
+### Changed — Admin panels open instantly
+- Blocking database queries in the admin panels are deferred, so the admin dialog opens immediately.
 
 ## [2.6.7] - 2026-07-01
 
