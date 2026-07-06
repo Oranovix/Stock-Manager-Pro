@@ -7,6 +7,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.8.0] - 2026-07-06
+
+
+### Fixed — Installed 2.7.9 crashed immediately at startup
+- The 2.7.9 installer shipped without the license public key file that the new edition system reads at launch, so the installed app died with "No such file or directory: …license_pubkey.pem" before showing a window. The file is now bundled, and the release pipeline verifies required runtime files are present in the build before publishing anything.
+- **If you already installed 2.7.9**: the app can't start (so it can't self-update) — download and run this version's installer manually; your data is preserved.
+
+### Fixed — Release pipeline: changelog publish to the public repo
+- The final release step failed when the changelog grew large (the file content was passed as an inline command argument and exceeded the OS limit). The payload is now handed over via a temp file, so the publish works regardless of file size. No changes to the app itself.
+
 ## [2.7.9] - 2026-07-06
 
 
