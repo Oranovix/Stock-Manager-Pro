@@ -1,7 +1,7 @@
 {
-  "version": "2.8.5",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.8.5/StockManagerPro-2.8.5-setup.exe",
-  "release_notes": "The native replica driver reports SQL errors as plain `ValueError`, while the app's fallback handlers (matrix-fingerprint `updated_at` probe, FK-safe delete, duplicate-key paths) catch the standard `sqlite3` exception types \u2014 so a routine, deliberately-probed error crashed instead of falling back. The replica wrapper now maps driver SQL errors to the matching `sqlite3` types (constraint violations \u2192 `IntegrityError`, everything else \u2192 `OperationalError`), preserving the message verbatim \u2014 the same contract the HTTP client has had since 2.6.4. Two new gate tests pin it down.",
+  "version": "2.9.0",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.9.0/StockManagerPro-2.9.0-setup.exe",
+  "release_notes": "The app now reports crashes, errors and degraded conditions (e.g. running offline because the cloud is unreachable) automatically, so problems at any PC get fixed without anyone having to report them. Identical failures from all machines are grouped into a single issue, tagged with the app version, edition and cloud mode, and each report carries the recent log context needed to diagnose it.; **Anonymous and scrubbed by design**: no shop data, no names, no inventory contents \u2014 reports contain the error and app version only. The machine is identified by a one-way hash (so \"affects 4 machines\" is countable without knowing which), the computer name is stripped, and Windows user-profile paths are masked everywhere. A CI gate enforces this privacy contract on every build.; **Visible off-switch**: Admin \u2192 Shop Settings \u2192 Privacy \u2192 \"Send anonymous error reports\" (on by default, applies immediately, stored only on this PC).",
   "release_date": "2026-07-10",
-  "checksum_sha256": "9026d7618805a09b8e29de3e6f34a161fbe9b67da8399d059834a9539eb10e6e"
+  "checksum_sha256": "75bfc4c985e675aa5a12eda6c78d4ac2a644b2de6309ee3463cebe5d7dfd0b3e"
 }
