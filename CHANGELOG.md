@@ -7,8 +7,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.8.3] - 2026-07-10
+## [2.8.4] - 2026-07-10
 
+
+### Fixed — Recurring `libsql panic` warnings after every cloud sync
+- The panic root cause wasn't threading after all: libsql 0.1.x poisons a connection's internal state after `sync()`, so the first statement on the old handle panics (`Option::unwrap() on a None value`) — with a sync every minute, that was a warning per minute (2.8.2 crashed outright; 2.8.3 contained it as a task error). The wrapper now rebuilds the native handle right after every sync (a purely local, milliseconds operation), so callers never touch the poisoned handle, and if any panic still occurs it reconnects and retries the statement once. Inside a transaction it never retries partial work — the transaction fails cleanly and the healed connection serves the next caller.
+- The thread-safety CI gate grew to 8 tests covering the self-healing paths: one-shot panic heals invisibly, sync rebuilds the handle, in-transaction panics abort without retry.
+
+## [2.8.3] - 2026-07-10
 
 ### Fixed — 2.8.2 froze at startup (2%) and crashed workers in cloud mode
 - **Startup freeze**: 2.8.2 built the cloud replica on the UI thread during database initialisation — with a stale replica cache that build could hang for minutes ("not responding" at 2%). The replica is now built on a background thread after migrations complete; the app starts immediately and serves queries over the (keep-alive) HTTP connection until the replica is ready, then switches automatically. A corrupted/outdated replica cache is now detected, deleted and re-pulled fresh instead of hanging.
