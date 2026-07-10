@@ -7,8 +7,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.8.1] - 2026-07-06
+## [2.8.2] - 2026-07-10
 
+
+### Fixed — Cloud mode is now fast: the app finally ships its embedded-replica engine
+- **What was wrong**: every installed app in cloud (replica) mode ran on the worst-case fallback path — each SQL statement was sent as its own HTTPS request on a brand-new connection (~400 ms per statement measured), so every screen, search and save paid seconds of network time. The app has always *preferred* a libSQL embedded replica (reads/writes hit a local file instantly and sync with the cloud in the background), but the native `libsql` driver was never included in the installer, so no installed copy could ever use it.
+- **Fix 1 — ship the replica engine**: `libsql` is now a pinned dependency and is bundled into the installer; the release pipeline refuses to publish a build that is missing it. In cloud mode, reads now come from the local replica file (instant, works offline) and changes sync with the cloud in the background — this is the designed architecture, active for the first time in an installed build.
+- **Fix 2 — 6.5× faster HTTP fallback**: the HTTP path (used briefly at startup while the replica is built, and wherever the native driver is unavailable) now keeps its connections alive instead of paying a fresh TLS handshake per statement: measured 378 ms → 58 ms per query.
+- Tip: the active mode is visible under Logs → cloud-sync card — it should read "Embedded replica" after this update, not "HTTP API".
+
+### Fixed — Untranslated pages: the UI now follows a language switch everywhere
+- Large parts of the app stayed English after switching to Arabic or German: Sales, Reports, Analytics, Barcode Generator, Devices, Part Types, Quick Scan, Transactions and the Customers page all kept their construction-time texts. Two causes, both fixed: many pages had stub `retranslate()` methods that never re-applied header/button/placeholder texts, and dozens of strings (analytics sections/KPI/chart titles, report cards, matrix filter chips, devices category tabs, barcode-generator options and statuses, tooltips) were hardcoded in English with no translation entry at all.
+- ~180 new translation keys added with full German and Arabic coverage; every page now implements a real `retranslate()`; device category tabs translate by key while custom categories keep their stored name.
+- The CI guard that protects against this regression was extended: it now scans labels, placeholders, tooltips, window titles, tabs and group boxes across all pages, tabs, components and dialogs — previously it only checked buttons and table headers.
+
+## [2.8.1] - 2026-07-06
 
 ### Fixed — Startup crashed in cloud mode: `FOREIGN KEY constraint failed` during the devices migration
 - On a cloud database that reached schema V24 before category seeding existed, `device_categories` is empty — the V25 phones-to-devices backfill then violates its foreign key and aborts startup. The cloud always enforces foreign keys (a local DB by default does not), which is why this only hit cloud-connected PCs. The V25 migration now seeds the device categories itself before backfilling, so it completes on any V24 database regardless of how it got there.
