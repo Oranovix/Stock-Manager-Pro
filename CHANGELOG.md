@@ -7,8 +7,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.8.2] - 2026-07-10
+## [2.8.3] - 2026-07-10
 
+
+### Fixed — 2.8.2 froze at startup (2%) and crashed workers in cloud mode
+- **Startup freeze**: 2.8.2 built the cloud replica on the UI thread during database initialisation — with a stale replica cache that build could hang for minutes ("not responding" at 2%). The replica is now built on a background thread after migrations complete; the app starts immediately and serves queries over the (keep-alive) HTTP connection until the replica is ready, then switches automatically. A corrupted/outdated replica cache is now detected, deleted and re-pulled fresh instead of hanging.
+- **Worker crashes** (`PanicException: Option::unwrap() on a None value`): the native replica driver is not thread-safe, and page queries could race the background sync inside it. Every database operation now goes through one lock with results read under that lock, and any residual driver panic surfaces as a normal database error instead of killing the thread. A new CI gate (`test_replica_wrapper`) hammers the wrapper from 8 threads and fails the build on any concurrency regression.
+- The Logs cloud-sync card now reports "Embedded replica" only when the replica is actually serving queries (previously it claimed replica mode even while still on HTTP).
+
+## [2.8.2] - 2026-07-10
 
 ### Fixed — Cloud mode is now fast: the app finally ships its embedded-replica engine
 - **What was wrong**: every installed app in cloud (replica) mode ran on the worst-case fallback path — each SQL statement was sent as its own HTTPS request on a brand-new connection (~400 ms per statement measured), so every screen, search and save paid seconds of network time. The app has always *preferred* a libSQL embedded replica (reads/writes hit a local file instantly and sync with the cloud in the background), but the native `libsql` driver was never included in the installer, so no installed copy could ever use it.
