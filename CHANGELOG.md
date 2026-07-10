@@ -7,6 +7,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.9.0] - 2026-07-10
+
+
+### Added — Automatic anonymous error reporting
+- The app now reports crashes, errors and degraded conditions (e.g. running offline because the cloud is unreachable) automatically, so problems at any PC get fixed without anyone having to report them. Identical failures from all machines are grouped into a single issue, tagged with the app version, edition and cloud mode, and each report carries the recent log context needed to diagnose it.
+- **Anonymous and scrubbed by design**: no shop data, no names, no inventory contents — reports contain the error and app version only. The machine is identified by a one-way hash (so "affects 4 machines" is countable without knowing which), the computer name is stripped, and Windows user-profile paths are masked everywhere. A CI gate enforces this privacy contract on every build.
+- **Visible off-switch**: Admin → Shop Settings → Privacy → "Send anonymous error reports" (on by default, applies immediately, stored only on this PC).
+
 ## [2.8.5] - 2026-07-10
 
 
