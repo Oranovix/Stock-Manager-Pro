@@ -1,7 +1,7 @@
 {
-  "version": "2.8.4",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.8.4/StockManagerPro-2.8.4-setup.exe",
-  "release_notes": "The panic root cause wasn't threading after all: libsql 0.1.x poisons a connection's internal state after `sync()`, so the first statement on the old handle panics (`Option::unwrap() on a None value`) \u2014 with a sync every minute, that was a warning per minute (2.8.2 crashed outright; 2.8.3 contained it as a task error). The wrapper now rebuilds the native handle right after every sync (a purely local, milliseconds operation), so callers never touch the poisoned handle, and if any panic still occurs it reconnects and retries the statement once. Inside a transaction it never retries partial work \u2014 the transaction fails cleanly and the healed connection serves the next caller.; The thread-safety CI gate grew to 8 tests covering the self-healing paths: one-shot panic heals invisibly, sync rebuilds the handle, in-transaction panics abort without retry.",
+  "version": "2.8.5",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.8.5/StockManagerPro-2.8.5-setup.exe",
+  "release_notes": "The native replica driver reports SQL errors as plain `ValueError`, while the app's fallback handlers (matrix-fingerprint `updated_at` probe, FK-safe delete, duplicate-key paths) catch the standard `sqlite3` exception types \u2014 so a routine, deliberately-probed error crashed instead of falling back. The replica wrapper now maps driver SQL errors to the matching `sqlite3` types (constraint violations \u2192 `IntegrityError`, everything else \u2192 `OperationalError`), preserving the message verbatim \u2014 the same contract the HTTP client has had since 2.6.4. Two new gate tests pin it down.",
   "release_date": "2026-07-10",
-  "checksum_sha256": "a9052b229593b913c5a1f0230ead81118c981d937cf1384b0fa94a79499f8b85"
+  "checksum_sha256": "9026d7618805a09b8e29de3e6f34a161fbe9b67da8399d059834a9539eb10e6e"
 }
