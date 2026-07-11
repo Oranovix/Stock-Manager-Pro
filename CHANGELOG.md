@@ -7,8 +7,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.9.0] - 2026-07-10
+## [2.10.0] - 2026-07-11
 
+
+### Fixed — Stock in/out and admin edits are now instant in cloud mode
+- Writes still travelled to the cloud one statement at a time (~1.2 s each measured), so scans and admin edits crawled even after reads became local. The replica now uses **offline writes**: changes land in the local database instantly (~1 ms measured) and are pushed to the cloud by the background sync — delivery verified end-to-end against the production database. Pending changes also push when the app closes, and unpushed changes survive restarts.
+- Trade-off, in line with the app's offline-first design: another PC sees a change after both sides' next sync tick (worst case ~2 minutes, previously ~1). In exchange, every operation on every PC is interactive.
+- A sync slower than 30 seconds now reports itself as a degraded event, so chronic sync problems surface before anyone complains.
+
+## [2.9.0] - 2026-07-10
 
 ### Added — Automatic anonymous error reporting
 - The app now reports crashes, errors and degraded conditions (e.g. running offline because the cloud is unreachable) automatically, so problems at any PC get fixed without anyone having to report them. Identical failures from all machines are grouped into a single issue, tagged with the app version, edition and cloud mode, and each report carries the recent log context needed to diagnose it.
