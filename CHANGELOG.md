@@ -7,8 +7,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.12.0] - 2026-07-13
+## [2.12.1] - 2026-07-13
 
+
+### Changed — Quieter logs for a self-healed cloud hiccup
+- A rare, transient cloud-driver hiccup that the app already **recovers from automatically** (it reconnects and retries the read, which succeeds) was being logged as a scary "panic" WARNING. It now logs quietly at debug level when the retry succeeds; only a hiccup that *survives* the retry is surfaced. No behaviour change — the app was already handling it correctly; this just stops the alarming message for something that was never a problem.
+
+## [2.12.0] - 2026-07-13
 
 ### Changed — Phones now live under Devices; the old Phones tab is removed
 - All phone units were consolidated into **Devices → Phones** and the standalone **Phones tab has been removed**. Every phone (290 units) was migrated and verified as an exact copy — units, status, prices and details all match — before the tab was retired. Scanning a phone's IMEI still works: it now opens the phone from Devices.
