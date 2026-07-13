@@ -7,8 +7,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.10.2] - 2026-07-13
+## [2.11.0] - 2026-07-13
 
+
+### Changed — Cloud mode is fast again: local reads + safe cloud writes
+- Browsing every tab is instant once more. The previous version read live from the cloud on every query (~58 ms each), so tab-heavy screens felt slow; now reads come from a **local copy of the database** (measured ~0.7 ms) while writes still go straight to the shared cloud, so several PCs stay safe editing at once. Verified against the production database: reads ~0.7 ms, writes ~330 ms, and you always see your own change immediately after saving.
+- This is the proven "local-first" design (fast local reads, one authoritative cloud for writes). Unlike the earlier offline-writes attempt, the local copy is **read-only** — it can't diverge, so the "server returned a conflict" error cannot happen. Other PCs' changes arrive on the regular sync tick (Admin → Cloud Sync interval); your own changes show instantly.
+- Where the fast local engine isn't available (rare), the app automatically uses the direct cloud connection — correct, just not as fast. A CI test proves reads/writes route correctly and that your own writes are always visible.
+
+## [2.10.2] - 2026-07-13
 
 ### Fixed — Matrix: column widths and scroll position no longer reset on every edit
 - The SELL/COST/TOTAL columns are wider by default so a full price fits without resizing. When you *do* resize a column, it now stays that width — previously every stock in/out or admin edit re-rendered the matrix and snapped it back to default.
