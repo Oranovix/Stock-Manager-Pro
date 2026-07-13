@@ -1,7 +1,7 @@
 {
-  "version": "2.11.0",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.11.0/StockManagerPro-2.11.0-setup.exe",
-  "release_notes": "Browsing every tab is instant once more. The previous version read live from the cloud on every query (~58 ms each), so tab-heavy screens felt slow; now reads come from a **local copy of the database** (measured ~0.7 ms) while writes still go straight to the shared cloud, so several PCs stay safe editing at once. Verified against the production database: reads ~0.7 ms, writes ~330 ms, and you always see your own change immediately after saving.; This is the proven \"local-first\" design (fast local reads, one authoritative cloud for writes). Unlike the earlier offline-writes attempt, the local copy is **read-only** \u2014 it can't diverge, so the \"server returned a conflict\" error cannot happen. Other PCs' changes arrive on the regular sync tick (Admin \u2192 Cloud Sync interval); your own changes show instantly.; Where the fast local engine isn't available (rare), the app automatically uses the direct cloud connection \u2014 correct, just not as fast. A CI test proves reads/writes route correctly and that your own writes are always visible.",
+  "version": "2.12.0",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.12.0/StockManagerPro-2.12.0-setup.exe",
+  "release_notes": "All phone units were consolidated into **Devices \u2192 Phones** and the standalone **Phones tab has been removed**. Every phone (290 units) was migrated and verified as an exact copy \u2014 units, status, prices and details all match \u2014 before the tab was retired. Scanning a phone's IMEI still works: it now opens the phone from Devices.; The old phone database is **kept as a backup** (nothing deleted); the app simply no longer shows the separate tab, so all phones are managed in one place going forward and can't drift between two lists again.",
   "release_date": "2026-07-13",
-  "checksum_sha256": "dd7cc43566d1a7b36ea94470ce080ec32790d2509309a9f792bac0083be51b71"
+  "checksum_sha256": "155340553fafeee2b2b8585375cf4c2046edaa4fb3b1b1f18180dfc1381a13d1"
 }
