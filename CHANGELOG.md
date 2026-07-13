@@ -7,8 +7,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.10.1] - 2026-07-13
+## [2.10.2] - 2026-07-13
 
+
+### Fixed — Matrix: column widths and scroll position no longer reset on every edit
+- The SELL/COST/TOTAL columns are wider by default so a full price fits without resizing. When you *do* resize a column, it now stays that width — previously every stock in/out or admin edit re-rendered the matrix and snapped it back to default.
+- The matrix no longer jumps back to the start (left/right) after each operation; your horizontal and vertical scroll position is preserved across edits.
+- Applies to every matrix in the app (inventory tabs, Part Types, admin panels). A CI test guards against the reset returning.
+
+## [2.10.1] - 2026-07-13
 
 ### Fixed — Cloud sync conflict (`server returned a conflict`) + safe multi-PC writes
 - The offline-write mode added in the previous version was **single-writer**: when two PCs edit the shared cloud database, their local write histories diverge and sync fails with `server returned a conflict` — and, worse, a stale local copy could show stock another PC already sold. Cloud mode now talks to the **one live cloud database directly** from every PC: always consistent, everyone sees each other's changes immediately, and the conflict can no longer occur (there is no local copy to diverge). Writes go straight to the cloud (~150 ms measured) instead of the old ~1.3 s, so stock in/out and admin edits stay fast without the freeze.
