@@ -7,8 +7,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.11.0] - 2026-07-13
+## [2.12.0] - 2026-07-13
 
+
+### Changed — Phones now live under Devices; the old Phones tab is removed
+- All phone units were consolidated into **Devices → Phones** and the standalone **Phones tab has been removed**. Every phone (290 units) was migrated and verified as an exact copy — units, status, prices and details all match — before the tab was retired. Scanning a phone's IMEI still works: it now opens the phone from Devices.
+- The old phone database is **kept as a backup** (nothing deleted); the app simply no longer shows the separate tab, so all phones are managed in one place going forward and can't drift between two lists again.
+
+## [2.11.0] - 2026-07-13
 
 ### Changed — Cloud mode is fast again: local reads + safe cloud writes
 - Browsing every tab is instant once more. The previous version read live from the cloud on every query (~58 ms each), so tab-heavy screens felt slow; now reads come from a **local copy of the database** (measured ~0.7 ms) while writes still go straight to the shared cloud, so several PCs stay safe editing at once. Verified against the production database: reads ~0.7 ms, writes ~330 ms, and you always see your own change immediately after saving.
