@@ -7,8 +7,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.10.0] - 2026-07-11
+## [2.10.1] - 2026-07-13
 
+
+### Fixed — Cloud sync conflict (`server returned a conflict`) + safe multi-PC writes
+- The offline-write mode added in the previous version was **single-writer**: when two PCs edit the shared cloud database, their local write histories diverge and sync fails with `server returned a conflict` — and, worse, a stale local copy could show stock another PC already sold. Cloud mode now talks to the **one live cloud database directly** from every PC: always consistent, everyone sees each other's changes immediately, and the conflict can no longer occur (there is no local copy to diverge). Writes go straight to the cloud (~150 ms measured) instead of the old ~1.3 s, so stock in/out and admin edits stay fast without the freeze.
+- No data was lost in the conflict — local and cloud were verified identical. On update, the leftover local cache (including any stuck un-synced bookkeeping) is cleared automatically; nothing to do by hand.
+- Trade-off: because every PC now reads live data instead of a local copy, browsing fetches over the network (tens of milliseconds per query) rather than instantly — the necessary cost of every PC seeing the same up-to-the-second stock. Operations run off the UI thread, so the app stays responsive.
+
+## [2.10.0] - 2026-07-11
 
 ### Fixed — Stock in/out and admin edits are now instant in cloud mode
 - Writes still travelled to the cloud one statement at a time (~1.2 s each measured), so scans and admin edits crawled even after reads became local. The replica now uses **offline writes**: changes land in the local database instantly (~1 ms measured) and are pushed to the cloud by the background sync — delivery verified end-to-end against the production database. Pending changes also push when the app closes, and unpushed changes survive restarts.
