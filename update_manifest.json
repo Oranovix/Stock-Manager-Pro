@@ -1,7 +1,7 @@
 {
-  "version": "2.13.1",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.1/StockManagerPro-2.13.1-setup.exe",
-  "release_notes": "In Devices, selecting a model and clicking **+ Add** now **prefills the form with that model** (brand, model, specs, prices) so entering another unit of it is one step \u2014 only the serial/IMEI is left blank for you to fill.; A brand-new unit now defaults **Battery to 100%**.; Leaving **Barcode empty auto-fills it from the serial/IMEI**, so every unit is scannable without typing the code twice. (Type a barcode to override.)",
+  "version": "2.13.2",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.2/StockManagerPro-2.13.2-setup.exe",
+  "release_notes": "After the left-right jump was fixed, the all-brands matrix started snapping to the **top** on each operation. Cause was a regression in the previous fix: the scroll-restore gave up after ~0.75 s, but a large all-brands page's scroll range keeps growing past that, so the saved position was never reached. The restore now keeps re-applying as the page settles (up to a few seconds, and only while the content size is still changing \u2014 it never fights your own scrolling), so both axes stay put.",
   "release_date": "2026-07-14",
-  "checksum_sha256": "4d1d6270cfcd57e7e6da9de6644745c14d5238623ffcba8de9d1fb6115233e51"
+  "checksum_sha256": "b578f77ddc4e7f318f380814706d3fa002387befad9fd1ab4d58b774dd05c49e"
 }
