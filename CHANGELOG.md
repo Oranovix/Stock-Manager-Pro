@@ -7,8 +7,24 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.13.0] - 2026-07-14
+## [2.13.1] - 2026-07-14
 
+
+### Added — Faster device entry (prefill, battery, auto-barcode)
+- In Devices, selecting a model and clicking **+ Add** now **prefills the form with that model** (brand, model, specs, prices) so entering another unit of it is one step — only the serial/IMEI is left blank for you to fill.
+- A brand-new unit now defaults **Battery to 100%**.
+- Leaving **Barcode empty auto-fills it from the serial/IMEI**, so every unit is scannable without typing the code twice. (Type a barcode to override.)
+
+### Changed — Dropdown fields now show a visible arrow
+- The Brand/Model/Color and other pick-or-type fields were styled with no drop-down arrow, so they looked like plain text boxes. They now show a small arrow indicating you can click to pick from your saved values (you can still type a new one).
+
+### Fixed — Matrix left-right jump (all-brands view)
+- The matrix still jumped sideways on each operation in the **All-brands** view: the earlier fix only restored horizontal scroll for the single-brand view. Horizontal scroll is now preserved for every brand section in all-brands mode too, and the restore re-asserts across the whole rebuild so a late relayout can't snap it back to the start.
+
+### Fixed — Cloud sync errors now self-heal instead of failing
+- Surfaced by the built-in error reporting: some PCs hit "Cloud sync failed — WAL frame insert conflict" and "database disk image is malformed". Cause: the fast local copy of the database can get its sync position invalidated (the cloud compacts its change-log server-side) or its file damaged (an interrupted sync), which a plain reconnect can't fix. The app now **detects this and rebuilds the local copy fresh from the cloud automatically**, then retries — so a sync hiccup or a damaged local file becomes an invisible recovery instead of a failed refresh or a repeated error. Safe because the local copy is read-only (it holds no unsaved changes). Covered by new CI tests.
+
+## [2.13.0] - 2026-07-14
 
 ### Fixed — Matrix no longer jumps sideways on every operation
 - Every stock edit rebuilds the matrix, which reset the **horizontal** scroll back to the start — so the view jumped left/right on each action. Root cause: the tab restored the *vertical* position robustly (waiting for the rebuilt table's scroll range to settle) but the horizontal position was only patched inside the table widget, which ran too early and got wiped. Horizontal scroll is now restored the same robust way, in the one authoritative place after the whole refresh settles. Both the inventory matrix and the Part Types matrices are covered, and the fragile per-widget attempts that fought the timing were removed.
