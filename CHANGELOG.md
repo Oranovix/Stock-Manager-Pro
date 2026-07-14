@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.6] - 2026-07-14
+
+
+### Fixed — Matrix jumping to the top on rapid operations
+- The matrix could still snap to the top after an edit when an operation triggered two refreshes in quick succession (common with cloud sync: the write, then a sync-completion refresh) — the second refresh read the scroll position after the first rebuild had already reset it, so it "remembered" the top. The view now tracks your scroll position continuously and holds it across back-to-back refreshes, in both the single-brand and all-brands views.
+
 ## [2.13.5] - 2026-07-14
 
 
