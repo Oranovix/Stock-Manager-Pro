@@ -7,8 +7,20 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.12.1] - 2026-07-13
+## [2.13.0] - 2026-07-14
 
+
+### Fixed — Matrix no longer jumps sideways on every operation
+- Every stock edit rebuilds the matrix, which reset the **horizontal** scroll back to the start — so the view jumped left/right on each action. Root cause: the tab restored the *vertical* position robustly (waiting for the rebuilt table's scroll range to settle) but the horizontal position was only patched inside the table widget, which ran too early and got wiped. Horizontal scroll is now restored the same robust way, in the one authoritative place after the whole refresh settles. Both the inventory matrix and the Part Types matrices are covered, and the fragile per-widget attempts that fought the timing were removed.
+
+### Changed — Device add/edit dropdowns now populate from your existing data
+- In the Devices add/edit dialog, **Brand**, **Model** and **Color** are pick-or-type dropdowns fed from data you already have. Their sourcing is now broader so they're useful everywhere:
+  - **Brand** is shop-wide across every device category — Apple/Samsung/Xiaomi/… show up even in a category you haven't added to yet (previously each category only saw its own brands, so new ones were blank).
+  - **Color** now also includes the colour list already used in your parts inventory (Black, Blue, Gold, Green, …), so phones — which were migrated without a colour — get a full colour dropdown immediately instead of an empty one.
+  - **Model** stays category-specific (an iPhone model shouldn't appear for laptops).
+- The remaining free-text spec fields that behave like shared vocabulary — watch **Band** and console **Edition** — are now pick-or-type dropdowns too, so they accumulate the values you use. You can always still type a new value in any of these.
+
+## [2.12.1] - 2026-07-13
 
 ### Changed — Quieter logs for a self-healed cloud hiccup
 - A rare, transient cloud-driver hiccup that the app already **recovers from automatically** (it reconnects and retries the read, which succeeds) was being logged as a scary "panic" WARNING. It now logs quietly at debug level when the retry succeeds; only a hiccup that *survives* the retry is surfaced. No behaviour change — the app was already handling it correctly; this just stops the alarming message for something that was never a problem.
