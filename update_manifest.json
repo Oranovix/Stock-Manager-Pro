@@ -1,7 +1,7 @@
 {
-  "version": "2.13.5",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.5/StockManagerPro-2.13.5-setup.exe",
-  "release_notes": "2.13.4 added an archive flag to part types. On multi-PC (cloud) setups the underlying column only appears after the **main (primary) PC** has been updated and opened, so a secondary PC that updated first could crash on launch with `no such column: archived`. The app now tolerates the column being absent \u2014 it starts normally and simply enables archiving automatically once the main PC's update has synced across. No data was affected.",
+  "version": "2.13.6",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.6/StockManagerPro-2.13.6-setup.exe",
+  "release_notes": "The matrix could still snap to the top after an edit when an operation triggered two refreshes in quick succession (common with cloud sync: the write, then a sync-completion refresh) \u2014 the second refresh read the scroll position after the first rebuild had already reset it, so it \"remembered\" the top. The view now tracks your scroll position continuously and holds it across back-to-back refreshes, in both the single-brand and all-brands views.",
   "release_date": "2026-07-14",
-  "checksum_sha256": "8c35dcaf3d3bfbd165a8c658e1a2d907298a6cd03b773c832dba8f13916adc6f"
+  "checksum_sha256": "ea604a8ae5e3ddb6d4ea8e8d7f35e2792767aff43681f4dc0a28758431fb060b"
 }
