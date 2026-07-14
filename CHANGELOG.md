@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.5] - 2026-07-14
+
+
+### Fixed — Startup crash on some PCs after updating ("no such column: archived")
+- 2.13.4 added an archive flag to part types. On multi-PC (cloud) setups the underlying column only appears after the **main (primary) PC** has been updated and opened, so a secondary PC that updated first could crash on launch with `no such column: archived`. The app now tolerates the column being absent — it starts normally and simply enables archiving automatically once the main PC's update has synced across. No data was affected.
+
 ## [2.13.4] - 2026-07-14
 
 
