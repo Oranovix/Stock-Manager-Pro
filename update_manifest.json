@@ -1,7 +1,7 @@
 {
-  "version": "2.13.4",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.4/StockManagerPro-2.13.4-setup.exe",
-  "release_notes": "The matrix drew a separator line between model series, but Samsung generations were grouped by the tens digit \u2014 so S24, S25 and S26 all landed in one block with no lines between them. Each numbered generation is now its own group (S25 separate from S26, A54 from A55, \u2026), while a generation's variants (S26, \"S26 Ultra\", \"S26+\") stay together. iPhone numeric series are unchanged.; Adding (or renaming to) a model name that already exists raised a raw `UNIQUE constraint failed: phone_models.name` crash. It now shows a clear message that the name is already taken (model names are unique shop-wide).; The Analytics tab showed values that were too high because it valued stock at the **sell** price. Stock Value, Value by Brand and the Valuation Pivot are now computed **at cost** (buy price; a missing cost counts as 0, matching the matrix's Cost view), and the labels say so. They also now **include device units** (phones, tablets, laptops, \u2026), which live in their own table and were previously left out entirely \u2014 so a brand's bar and the totals reflect your whole holding, and everything reconciles with the stock-value figure. The dashboard's separate \"Inventory Value\" (retail) is unchanged.",
+  "version": "2.13.5",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.5/StockManagerPro-2.13.5-setup.exe",
+  "release_notes": "2.13.4 added an archive flag to part types. On multi-PC (cloud) setups the underlying column only appears after the **main (primary) PC** has been updated and opened, so a secondary PC that updated first could crash on launch with `no such column: archived`. The app now tolerates the column being absent \u2014 it starts normally and simply enables archiving automatically once the main PC's update has synced across. No data was affected.",
   "release_date": "2026-07-14",
-  "checksum_sha256": "1717d827bc154e8bae955a26bc513c9e6169ca2fe641b176883e74b5fa02e316"
+  "checksum_sha256": "8c35dcaf3d3bfbd165a8c658e1a2d907298a6cd03b773c832dba8f13916adc6f"
 }
