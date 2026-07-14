@@ -1,7 +1,7 @@
 {
-  "version": "2.13.0",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.0/StockManagerPro-2.13.0-setup.exe",
-  "release_notes": "Every stock edit rebuilds the matrix, which reset the **horizontal** scroll back to the start \u2014 so the view jumped left/right on each action. Root cause: the tab restored the *vertical* position robustly (waiting for the rebuilt table's scroll range to settle) but the horizontal position was only patched inside the table widget, which ran too early and got wiped. Horizontal scroll is now restored the same robust way, in the one authoritative place after the whole refresh settles. Both the inventory matrix and the Part Types matrices are covered, and the fragile per-widget attempts that fought the timing were removed.; In the Devices add/edit dialog, **Brand**, **Model** and **Color** are pick-or-type dropdowns fed from data you already have. Their sourcing is now broader so they're useful everywhere:; **Brand** is shop-wide across every device category \u2014 Apple/Samsung/Xiaomi/\u2026 show up even in a category you haven't added to yet (previously each category only saw its own brands, so new ones were blank).",
+  "version": "2.13.1",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.1/StockManagerPro-2.13.1-setup.exe",
+  "release_notes": "In Devices, selecting a model and clicking **+ Add** now **prefills the form with that model** (brand, model, specs, prices) so entering another unit of it is one step \u2014 only the serial/IMEI is left blank for you to fill.; A brand-new unit now defaults **Battery to 100%**.; Leaving **Barcode empty auto-fills it from the serial/IMEI**, so every unit is scannable without typing the code twice. (Type a barcode to override.)",
   "release_date": "2026-07-14",
-  "checksum_sha256": "32bbb3135394000b71475fd881f8c7b04592d179f52954cdde184eee80144a9a"
+  "checksum_sha256": "4d1d6270cfcd57e7e6da9de6644745c14d5238623ffcba8de9d1fb6115233e51"
 }
