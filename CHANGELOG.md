@@ -7,8 +7,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.13.2] - 2026-07-14
+## [2.13.3] - 2026-07-14
 
+
+### Fixed — Device labels now include every field (memory, colour, battery, specs)
+- The device label export only wrote brand, model, serial and condition — so colour, memory/storage, battery %, and category-specific fields (laptop CPU/RAM/SSD/screen/GPU, watch size/band, console edition, etc.) were missing. Labels now carry **all** of a device's relevant fields for its category, and each category shows only its own fields. The exported file gained dedicated columns (storage, colour, battery, specs) plus a ready-made **`details`** one-line summary, and the export dialog now shows a **Label text** preview column so you can see exactly what the sticker will contain before printing.
+- Note: to make the extra fields appear on the printed sticker, point your YunPrint label template at the new columns (the `details` column gives you everything in one line).
+
+## [2.13.2] - 2026-07-14
 
 ### Fixed — Matrix jump to the top (all-brands view)
 - After the left-right jump was fixed, the all-brands matrix started snapping to the **top** on each operation. Cause was a regression in the previous fix: the scroll-restore gave up after ~0.75 s, but a large all-brands page's scroll range keeps growing past that, so the saved position was never reached. The restore now keeps re-applying as the page settles (up to a few seconds, and only while the content size is still changing — it never fights your own scrolling), so both axes stay put.
