@@ -7,8 +7,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.13.1] - 2026-07-14
+## [2.13.2] - 2026-07-14
 
+
+### Fixed — Matrix jump to the top (all-brands view)
+- After the left-right jump was fixed, the all-brands matrix started snapping to the **top** on each operation. Cause was a regression in the previous fix: the scroll-restore gave up after ~0.75 s, but a large all-brands page's scroll range keeps growing past that, so the saved position was never reached. The restore now keeps re-applying as the page settles (up to a few seconds, and only while the content size is still changing — it never fights your own scrolling), so both axes stay put.
+
+## [2.13.1] - 2026-07-14
 
 ### Added — Faster device entry (prefill, battery, auto-barcode)
 - In Devices, selecting a model and clicking **+ Add** now **prefills the form with that model** (brand, model, specs, prices) so entering another unit of it is one step — only the serial/IMEI is left blank for you to fill.
