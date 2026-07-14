@@ -1,7 +1,7 @@
 {
-  "version": "2.13.2",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.2/StockManagerPro-2.13.2-setup.exe",
-  "release_notes": "After the left-right jump was fixed, the all-brands matrix started snapping to the **top** on each operation. Cause was a regression in the previous fix: the scroll-restore gave up after ~0.75 s, but a large all-brands page's scroll range keeps growing past that, so the saved position was never reached. The restore now keeps re-applying as the page settles (up to a few seconds, and only while the content size is still changing \u2014 it never fights your own scrolling), so both axes stay put.",
+  "version": "2.13.3",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.3/StockManagerPro-2.13.3-setup.exe",
+  "release_notes": "The device label export only wrote brand, model, serial and condition \u2014 so colour, memory/storage, battery %, and category-specific fields (laptop CPU/RAM/SSD/screen/GPU, watch size/band, console edition, etc.) were missing. Labels now carry **all** of a device's relevant fields for its category, and each category shows only its own fields. The exported file gained dedicated columns (storage, colour, battery, specs) plus a ready-made **`details`** one-line summary, and the export dialog now shows a **Label text** preview column so you can see exactly what the sticker will contain before printing.; Note: to make the extra fields appear on the printed sticker, point your YunPrint label template at the new columns (the `details` column gives you everything in one line).",
   "release_date": "2026-07-14",
-  "checksum_sha256": "b578f77ddc4e7f318f380814706d3fa002387befad9fd1ab4d58b774dd05c49e"
+  "checksum_sha256": "f26c69f7617a606edd27f511aa2cf0c0f1ff70b306e87f9275d0e1674db54983"
 }
