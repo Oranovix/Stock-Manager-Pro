@@ -7,8 +7,34 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.13.3] - 2026-07-14
+## [2.13.4] - 2026-07-14
 
+
+### Fixed — Matrix now separates each model generation
+- The matrix drew a separator line between model series, but Samsung generations were grouped by the tens digit — so S24, S25 and S26 all landed in one block with no lines between them. Each numbered generation is now its own group (S25 separate from S26, A54 from A55, …), while a generation's variants (S26, "S26 Ultra", "S26+") stay together. iPhone numeric series are unchanged.
+
+### Fixed — Adding a duplicate model name no longer crashes
+- Adding (or renaming to) a model name that already exists raised a raw `UNIQUE constraint failed: phone_models.name` crash. It now shows a clear message that the name is already taken (model names are unique shop-wide).
+
+### Fixed — Analytics now values stock at cost and includes devices
+- The Analytics tab showed values that were too high because it valued stock at the **sell** price. Stock Value, Value by Brand and the Valuation Pivot are now computed **at cost** (buy price; a missing cost counts as 0, matching the matrix's Cost view), and the labels say so. They also now **include device units** (phones, tablets, laptops, …), which live in their own table and were previously left out entirely — so a brand's bar and the totals reflect your whole holding, and everything reconciles with the stock-value figure. The dashboard's separate "Inventory Value" (retail) is unchanged.
+
+### Added — Archive a part type instead of losing it
+- A part type that has ever been sold, audited or returned can't be hard-deleted (that would erase those records), which previously surfaced as a raw `FOREIGN KEY constraint failed` error even after you zeroed its stock. Deleting such a type now explains the situation and offers to **archive** it instead: it disappears from the matrix and the Part Types list (its stock is 0, so it never affected figures) while its history stays intact. A **Show archived** toggle in the Part Types admin lists archived types with a **Restore** button. Empty part types with no history still delete outright, and their leftover zero-stock placeholder rows are cleaned up automatically.
+
+### Changed — Devices tab: collapsible header + resizable unit table
+- The Devices tab now has a collapsible **Overview** header (like Inventory and Part Types) — click it to hide the stat cards and give the tables more room. The aggregated grid and the per-model unit table now sit in a draggable splitter, so the second table is much larger by default and you can drag the divider to size it however you like.
+
+### Added — Report PDF button in every device category
+- Each device tab (Phones, Tablets, Laptops, Earbuds, Watches, Consoles, Speakers) now has a **Report PDF** button that generates a professional, branded inventory report **for that category alone**. Units are grouped by model with per-model subtotals (count, in-stock, stock value), a KPI header (total units, in stock, sold, stock value at cost, and average battery where relevant), and a full per-unit table (serial, storage, colour, battery, condition, category-specific specs, buy/sell price, status). The report opens automatically in your PDF viewer and is saved under the app's `reports` folder.
+
+### Added — Model filter in the device Labels dialog
+- The **Labels** dialog gained a **Model** dropdown so you can print labels for a single model instead of the whole category. And when you already have a model selected in the grid and click **Labels**, the dialog now opens **pre-filtered to that model** — no more scrolling past every other model to find the units you meant.
+
+### Fixed — Audit panel (and price lists) crash in cloud mode
+- Surfaced by the built-in error reporting: `'_SplitCloudConnection' object has no attribute 'cursor'`. Some screens (the audit history and price lists) open a database cursor directly, which existed only on the plain local database, not on the cloud connection — so those screens failed to load when cloud sync was on. The cloud connection now provides a compatible cursor, so audit loading and price lists work in cloud mode. Covered by a new CI test.
+
+## [2.13.3] - 2026-07-14
 
 ### Fixed — Device labels now include every field (memory, colour, battery, specs)
 - The device label export only wrote brand, model, serial and condition — so colour, memory/storage, battery %, and category-specific fields (laptop CPU/RAM/SSD/screen/GPU, watch size/band, console edition, etc.) were missing. Labels now carry **all** of a device's relevant fields for its category, and each category shows only its own fields. The exported file gained dedicated columns (storage, colour, battery, specs) plus a ready-made **`details`** one-line summary, and the export dialog now shows a **Label text** preview column so you can see exactly what the sticker will contain before printing.
