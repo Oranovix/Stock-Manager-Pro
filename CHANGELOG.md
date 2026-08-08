@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.8] - 2026-08-08
+
+
+### Fixed — Part Types admin freezing when selecting a part type (cloud)
+- Selecting a part type in Admin → Part Types loaded each model's colour settings with a **separate database query per model** — dozens to hundreds of tiny queries. On a single PC that's instant, but over cloud sync each one is a network round-trip, so the panel froze for seconds. It now loads every model's settings in **one query**, so selecting a part type is fast again even with many models.
+
 ## [2.13.7] - 2026-08-08
 
 
