@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.10] - 2026-08-08
+
+
+### Fixed — Direct barcode scans freezing for seconds
+- Scanning a product or a phone directly (the top scan box / a handheld scanner) froze the app for a second or more each time. The device lookup was reading **every** device and re-checking all their barcodes and IMEIs one by one in memory; it now finds the match with a single fast lookup. The whole scan (and acting on a scanned phone — sold / reserved / back to stock) now also runs in the background, so scanning stays instant.
+
 ## [2.13.9] - 2026-08-08
 
 
