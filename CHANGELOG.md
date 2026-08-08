@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.9] - 2026-08-08
+
+
+### Fixed — Devices page freezing on sell / reserve / delete (cloud)
+- Marking a scanned phone as sold (and reserve, back-to-stock, delete, add/edit) briefly froze the Devices page: the change and the full reload ran on the screen's main thread, so with cloud sync it stalled a fraction of a second each time. Those actions now run in the background — the change is saved and the list refreshes without locking up the screen, so selling a scanned phone feels immediate.
+
 ## [2.13.8] - 2026-08-08
 
 
