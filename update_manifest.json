@@ -1,7 +1,7 @@
 {
-  "version": "2.13.9",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.9/StockManagerPro-2.13.9-setup.exe",
-  "release_notes": "Marking a scanned phone as sold (and reserve, back-to-stock, delete, add/edit) briefly froze the Devices page: the change and the full reload ran on the screen's main thread, so with cloud sync it stalled a fraction of a second each time. Those actions now run in the background \u2014 the change is saved and the list refreshes without locking up the screen, so selling a scanned phone feels immediate.",
+  "version": "2.13.10",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.10/StockManagerPro-2.13.10-setup.exe",
+  "release_notes": "Scanning a product or a phone directly (the top scan box / a handheld scanner) froze the app for a second or more each time. The device lookup was reading **every** device and re-checking all their barcodes and IMEIs one by one in memory; it now finds the match with a single fast lookup. The whole scan (and acting on a scanned phone \u2014 sold / reserved / back to stock) now also runs in the background, so scanning stays instant.",
   "release_date": "2026-08-08",
-  "checksum_sha256": "3b656d95fd1177acd17b66fc6eef1277f5a02f4accec44c4e5595186e287ec2d"
+  "checksum_sha256": "167fb5cb62b09f402620e20c94390043f2376946afa33c4a62e5a7c4775fc400"
 }
