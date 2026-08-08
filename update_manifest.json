@@ -1,7 +1,7 @@
 {
-  "version": "2.13.8",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.8/StockManagerPro-2.13.8-setup.exe",
-  "release_notes": "Selecting a part type in Admin \u2192 Part Types loaded each model's colour settings with a **separate database query per model** \u2014 dozens to hundreds of tiny queries. On a single PC that's instant, but over cloud sync each one is a network round-trip, so the panel froze for seconds. It now loads every model's settings in **one query**, so selecting a part type is fast again even with many models.",
+  "version": "2.13.9",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.9/StockManagerPro-2.13.9-setup.exe",
+  "release_notes": "Marking a scanned phone as sold (and reserve, back-to-stock, delete, add/edit) briefly froze the Devices page: the change and the full reload ran on the screen's main thread, so with cloud sync it stalled a fraction of a second each time. Those actions now run in the background \u2014 the change is saved and the list refreshes without locking up the screen, so selling a scanned phone feels immediate.",
   "release_date": "2026-08-08",
-  "checksum_sha256": "ea40d1dfb78c000628b47a6ef67dd87c1e209b9b2456fb38847f282be25c1e6e"
+  "checksum_sha256": "3b656d95fd1177acd17b66fc6eef1277f5a02f4accec44c4e5595186e287ec2d"
 }
