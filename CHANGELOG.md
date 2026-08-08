@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.7] - 2026-08-08
+
+
+### Fixed — App freezing during cloud sync (admin, matrix, everything)
+- With cloud sync on, the app froze for seconds on many operations — saving in admin, closing admin, matrix edits, and general use. Cause: after every change, the app did a full cloud re-sync **before the next read** (and the every-30-minute background sync blocked reads while it ran); those syncs take up to several seconds, so the whole window froze. Reads themselves were already fast. Now the app reads the just-changed data directly from the cloud (fast) while it refreshes its local copy **in the background**, and reads never wait on a sync — so editing and navigating stay responsive. Saving a change still takes a moment (it's written straight to the shared cloud so every PC stays consistent), but the multi-second freezes are gone.
+
 ## [2.13.6] - 2026-07-14
 
 
