@@ -1,7 +1,7 @@
 {
-  "version": "2.13.6",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.6/StockManagerPro-2.13.6-setup.exe",
-  "release_notes": "The matrix could still snap to the top after an edit when an operation triggered two refreshes in quick succession (common with cloud sync: the write, then a sync-completion refresh) \u2014 the second refresh read the scroll position after the first rebuild had already reset it, so it \"remembered\" the top. The view now tracks your scroll position continuously and holds it across back-to-back refreshes, in both the single-brand and all-brands views.",
-  "release_date": "2026-07-14",
-  "checksum_sha256": "ea604a8ae5e3ddb6d4ea8e8d7f35e2792767aff43681f4dc0a28758431fb060b"
+  "version": "2.13.7",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.7/StockManagerPro-2.13.7-setup.exe",
+  "release_notes": "With cloud sync on, the app froze for seconds on many operations \u2014 saving in admin, closing admin, matrix edits, and general use. Cause: after every change, the app did a full cloud re-sync **before the next read** (and the every-30-minute background sync blocked reads while it ran); those syncs take up to several seconds, so the whole window froze. Reads themselves were already fast. Now the app reads the just-changed data directly from the cloud (fast) while it refreshes its local copy **in the background**, and reads never wait on a sync \u2014 so editing and navigating stay responsive. Saving a change still takes a moment (it's written straight to the shared cloud so every PC stays consistent), but the multi-second freezes are gone.",
+  "release_date": "2026-08-08",
+  "checksum_sha256": "c9411347d908e5ca12727961c9ae06295afcafb9ae5e6813f679ecb38f1ef569"
 }
