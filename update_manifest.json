@@ -1,7 +1,7 @@
 {
-  "version": "2.13.10",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.10/StockManagerPro-2.13.10-setup.exe",
-  "release_notes": "Scanning a product or a phone directly (the top scan box / a handheld scanner) froze the app for a second or more each time. The device lookup was reading **every** device and re-checking all their barcodes and IMEIs one by one in memory; it now finds the match with a single fast lookup. The whole scan (and acting on a scanned phone \u2014 sold / reserved / back to stock) now also runs in the background, so scanning stays instant.",
-  "release_date": "2026-08-08",
-  "checksum_sha256": "167fb5cb62b09f402620e20c94390043f2376946afa33c4a62e5a7c4775fc400"
+  "version": "2.13.12",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.12/StockManagerPro-2.13.12-setup.exe",
+  "release_notes": "Selecting a part type in Admin \u2192 Part Types now loads its colours, models and barcodes in the background, so the screen stays responsive even in the brief moment after a save when data is fetched from the cloud.; When our build service's temporary storage filled up, the whole release stopped before publishing the update \u2014 so a version could build but never reach your app. Publishing no longer depends on that storage step, so updates always go out.",
+  "release_date": "2026-08-13",
+  "checksum_sha256": "5a23f5e26883e1bfc22ebd3f9fd78646a465df57e94de163edc48315b114de4a"
 }
