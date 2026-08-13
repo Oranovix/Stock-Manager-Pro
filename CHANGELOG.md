@@ -7,6 +7,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.13] - 2026-08-13
+
+
+### Added — Sell History tab + daily sales PDF report
+- A new **Sell History** tab (under Sales) automatically records every sell — parts going out of stock **and** devices marked sold — grouped by day with revenue, item count and units. Pick a range (today / 7 / 30 / 90 days / this year) and hit **Report PDF** for a professional per-day sales report. Parts are valued at quantity × sell price; devices at the price they sold for.
+
+### Added — Colour shown in the Transactions history
+- The Transactions table now has a **Colour** column, so you can see which colour variant of a part moved (previously matrix parts showed only model + part type).
+
 ## [2.13.12] - 2026-08-13
 
 
