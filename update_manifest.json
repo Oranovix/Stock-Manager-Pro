@@ -1,7 +1,7 @@
 {
-  "version": "2.13.12",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.12/StockManagerPro-2.13.12-setup.exe",
-  "release_notes": "Selecting a part type in Admin \u2192 Part Types now loads its colours, models and barcodes in the background, so the screen stays responsive even in the brief moment after a save when data is fetched from the cloud.; When our build service's temporary storage filled up, the whole release stopped before publishing the update \u2014 so a version could build but never reach your app. Publishing no longer depends on that storage step, so updates always go out.",
+  "version": "2.13.13",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.13/StockManagerPro-2.13.13-setup.exe",
+  "release_notes": "A new **Sell History** tab (under Sales) automatically records every sell \u2014 parts going out of stock **and** devices marked sold \u2014 grouped by day with revenue, item count and units. Pick a range (today / 7 / 30 / 90 days / this year) and hit **Report PDF** for a professional per-day sales report. Parts are valued at quantity \u00d7 sell price; devices at the price they sold for.; The Transactions table now has a **Colour** column, so you can see which colour variant of a part moved (previously matrix parts showed only model + part type).",
   "release_date": "2026-08-13",
-  "checksum_sha256": "5a23f5e26883e1bfc22ebd3f9fd78646a465df57e94de163edc48315b114de4a"
+  "checksum_sha256": "8cdae0febe69d2ca289b338402e113de8abf4d5b26c080f1838aaadba28a6faa"
 }
