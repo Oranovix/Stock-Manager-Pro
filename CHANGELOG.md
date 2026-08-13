@@ -7,6 +7,21 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.12] - 2026-08-13
+
+
+### Changed — Part Types admin no longer hitches when selecting a part type
+- Selecting a part type in Admin → Part Types now loads its colours, models and barcodes in the background, so the screen stays responsive even in the brief moment after a save when data is fetched from the cloud.
+
+### Fixed — Releases could silently fail to publish
+- When our build service's temporary storage filled up, the whole release stopped before publishing the update — so a version could build but never reach your app. Publishing no longer depends on that storage step, so updates always go out.
+
+## [2.13.11] - 2026-08-13
+
+
+### Fixed — Inventory Report rows printed on top of each other
+- In the Inventory Report PDF, the item rows and the "Subtotal" line under each part type were drawn on the same line, producing garbled, overlapping text. Each row and subtotal now prints on its own line. (Only the grouped Inventory Report was affected; the device reports and other reports were fine.)
+
 ## [2.13.10] - 2026-08-08
 
 
