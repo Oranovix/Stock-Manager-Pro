@@ -1,7 +1,7 @@
 {
-  "version": "2.13.17",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.17/StockManagerPro-2.13.17-setup.exe",
-  "release_notes": "Diagnosing the failing machine revealed **two** independent file-lockers: (1) the app process could silently keep running for minutes after its window closed (a background cloud sync stuck in the network layer held it alive), and (2) **another program \u2014 Chrome in this case \u2014 had one of the app's DLLs loaded**, which no amount of closing the app can release. Now: the app **guarantees its process exits** the moment you close it, and the installer **clears the old install even when third-party programs hold files** (locked files are moved aside instead of deleted \u2014 Windows allows that \u2014 and cleaned up on the following update). Updates can no longer fail with \"DeleteFile failed; code 5\".",
+  "version": "2.13.18",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.18/StockManagerPro-2.13.18-setup.exe",
+  "release_notes": "**Parts**: if you stock an item back in on the **same day** it was sold, that sale disappears from the Sell History automatically (a partial re-stock reduces the quantity instead). Restock deliveries never touch real sales \u2014 a stock-in on a later day, or before that day's sales, changes nothing.; **Devices**: marking a sold device **Back to Stock** removes that sale from the history automatically; selling it again later counts normally.; The Transactions page still keeps the complete raw movement history \u2014 only the Sell History (and its PDF report) shows the cleaned-up sales picture.",
   "release_date": "2026-08-14",
-  "checksum_sha256": "64a89ceb2574245c64cebd8053c7ad4e9b7baef022d2fe26bd7117304ce35023"
+  "checksum_sha256": "13ca8f009c486f8f4d51af8394eacfda4c18683a54ba38447fc2c458507f9bf9"
 }
