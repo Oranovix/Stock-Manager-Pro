@@ -7,6 +7,16 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.14] - 2026-08-14
+
+
+### Added — Barcode Generator: edit any code in place, fix oversize with one click
+- **Entries table**: after Generate, every barcode appears in an editable list (status, item, colour, code, live width in mm). Double-click any code to change it — the width re-measures instantly and duplicates are flagged live against the whole batch **and** everything already saved. No more regenerating a whole bulk batch to adjust one label.
+- **Fix-It dialog for oversize codes**: Verify now opens a repair dialog when codes are too wide for the sticker. Each one gets ranked suggestions — tidy separators, shortened, or a compact numeric code (~19 mm instead of ~55 mm) — every suggestion pre-checked to be unique, plus a type-your-own field with a live width meter and a **Fix all automatically** button.
+- **Manual edits are protected**: a code you edited by hand is saved as locked, and bulk "Regenerate (overwrite existing)" keeps it (right-click a row to lock/unlock).
+- **Sticker size is now a setting** on the page (width + margin), so Verify checks against the label roll you actually use.
+- The Sell History tab got its sidebar icon.
+
 ## [2.13.13] - 2026-08-13
 
 
