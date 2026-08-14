@@ -7,6 +7,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.15] - 2026-08-14
+
+
+### Fixed — No more freezes on saving barcodes or changing colours
+- **Assign & Save** in the Barcode Generator now saves in the background — the button shows it's working and the app stays fully usable, even for hundreds of barcodes.
+- **Changing colours** (the colour popup in the matrix, and in Part Types: the model include/exclude checkboxes, colour dialogs, adding/removing part-type colours, and Save-all-barcodes) used to send **one cloud request per part type × colour** — hundreds of round-trips that froze the app for many seconds. These now run as a few combined requests **in the background**: click Save and keep working; the view refreshes when it's done.
+
 ## [2.13.14] - 2026-08-14
 
 
