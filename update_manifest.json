@@ -1,7 +1,7 @@
 {
-  "version": "2.13.15",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.15/StockManagerPro-2.13.15-setup.exe",
-  "release_notes": "**Assign & Save** in the Barcode Generator now saves in the background \u2014 the button shows it's working and the app stays fully usable, even for hundreds of barcodes.; **Changing colours** (the colour popup in the matrix, and in Part Types: the model include/exclude checkboxes, colour dialogs, adding/removing part-type colours, and Save-all-barcodes) used to send **one cloud request per part type \u00d7 colour** \u2014 hundreds of round-trips that froze the app for many seconds. These now run as a few combined requests **in the background**: click Save and keep working; the view refreshes when it's done.",
+  "version": "2.13.16",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.16/StockManagerPro-2.13.16-setup.exe",
+  "release_notes": "Installing an update while the app was still closing (or still open) failed with \"DeleteFile failed; code 5\". The installer now **waits for the app to finish closing and then closes any leftover instance automatically** before copying files \u2014 updates install cleanly every time, whether started from the in-app updater or by running the setup manually. (If you hit this on the current update: close Stock Manager Pro fully, then click \"Try again\" \u2014 never \"Skip this file\".); New **+ Sale** button records a sale made outside the system (e.g. a repair service); **+ Purchase** records a buy/expense. Both appear in the daily record \u2014 purchases shown in red with a minus \u2014 and can be removed via right-click. New **Purchases** and **Net** totals on the tab, in each day's summary line, and in the PDF report.",
   "release_date": "2026-08-14",
-  "checksum_sha256": "a801f4101022ab15c182a914e214d07263a26f1a360da5c34bc953eeaf2e618d"
+  "checksum_sha256": "be6927090109835de8704aa67f411dec06d3a617d95dc7a411962a6b65933a56"
 }
