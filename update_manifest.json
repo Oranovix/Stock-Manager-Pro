@@ -1,7 +1,7 @@
 {
-  "version": "2.13.16",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.16/StockManagerPro-2.13.16-setup.exe",
-  "release_notes": "Installing an update while the app was still closing (or still open) failed with \"DeleteFile failed; code 5\". The installer now **waits for the app to finish closing and then closes any leftover instance automatically** before copying files \u2014 updates install cleanly every time, whether started from the in-app updater or by running the setup manually. (If you hit this on the current update: close Stock Manager Pro fully, then click \"Try again\" \u2014 never \"Skip this file\".); New **+ Sale** button records a sale made outside the system (e.g. a repair service); **+ Purchase** records a buy/expense. Both appear in the daily record \u2014 purchases shown in red with a minus \u2014 and can be removed via right-click. New **Purchases** and **Net** totals on the tab, in each day's summary line, and in the PDF report.",
+  "version": "2.13.17",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.17/StockManagerPro-2.13.17-setup.exe",
+  "release_notes": "Diagnosing the failing machine revealed **two** independent file-lockers: (1) the app process could silently keep running for minutes after its window closed (a background cloud sync stuck in the network layer held it alive), and (2) **another program \u2014 Chrome in this case \u2014 had one of the app's DLLs loaded**, which no amount of closing the app can release. Now: the app **guarantees its process exits** the moment you close it, and the installer **clears the old install even when third-party programs hold files** (locked files are moved aside instead of deleted \u2014 Windows allows that \u2014 and cleaned up on the following update). Updates can no longer fail with \"DeleteFile failed; code 5\".",
   "release_date": "2026-08-14",
-  "checksum_sha256": "be6927090109835de8704aa67f411dec06d3a617d95dc7a411962a6b65933a56"
+  "checksum_sha256": "64a89ceb2574245c64cebd8053c7ad4e9b7baef022d2fe26bd7117304ce35023"
 }
