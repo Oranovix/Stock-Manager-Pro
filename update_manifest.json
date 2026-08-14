@@ -1,7 +1,7 @@
 {
-  "version": "2.13.18",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.18/StockManagerPro-2.13.18-setup.exe",
-  "release_notes": "**Parts**: if you stock an item back in on the **same day** it was sold, that sale disappears from the Sell History automatically (a partial re-stock reduces the quantity instead). Restock deliveries never touch real sales \u2014 a stock-in on a later day, or before that day's sales, changes nothing.; **Devices**: marking a sold device **Back to Stock** removes that sale from the history automatically; selling it again later counts normally.; The Transactions page still keeps the complete raw movement history \u2014 only the Sell History (and its PDF report) shows the cleaned-up sales picture.",
+  "version": "2.13.19",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.19/StockManagerPro-2.13.19-setup.exe",
+  "release_notes": "Right-click any sale (part or device) in the Sell History and choose **\"Not a sale \u2014 remove from history\"** \u2014 for cases the automatic cleanup can't know about, like an accidental sale stocked back in on a later day. The entry disappears from the daily record, the totals and the PDF report. Changed your mind? The right-click menu also offers **\"Restore removed sales\"** to bring every override back. As always, the Transactions page keeps the full raw movement history.",
   "release_date": "2026-08-14",
-  "checksum_sha256": "13ca8f009c486f8f4d51af8394eacfda4c18683a54ba38447fc2c458507f9bf9"
+  "checksum_sha256": "9663a796fc2d20cb5aa8d3d6e9eabb13fab411a524ef23309a50b471234df02d"
 }
