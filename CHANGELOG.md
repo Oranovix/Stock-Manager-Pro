@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.19] - 2026-08-14
+
+
+### Added — "Not a sale" override in Sell History
+- Right-click any sale (part or device) in the Sell History and choose **"Not a sale — remove from history"** — for cases the automatic cleanup can't know about, like an accidental sale stocked back in on a later day. The entry disappears from the daily record, the totals and the PDF report. Changed your mind? The right-click menu also offers **"Restore removed sales"** to bring every override back. As always, the Transactions page keeps the full raw movement history.
+
 ## [2.13.18] - 2026-08-14
 
 
