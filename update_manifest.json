@@ -1,7 +1,7 @@
 {
-  "version": "2.13.13",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.13/StockManagerPro-2.13.13-setup.exe",
-  "release_notes": "A new **Sell History** tab (under Sales) automatically records every sell \u2014 parts going out of stock **and** devices marked sold \u2014 grouped by day with revenue, item count and units. Pick a range (today / 7 / 30 / 90 days / this year) and hit **Report PDF** for a professional per-day sales report. Parts are valued at quantity \u00d7 sell price; devices at the price they sold for.; The Transactions table now has a **Colour** column, so you can see which colour variant of a part moved (previously matrix parts showed only model + part type).",
-  "release_date": "2026-08-13",
-  "checksum_sha256": "8cdae0febe69d2ca289b338402e113de8abf4d5b26c080f1838aaadba28a6faa"
+  "version": "2.13.14",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.14/StockManagerPro-2.13.14-setup.exe",
+  "release_notes": "**Entries table**: after Generate, every barcode appears in an editable list (status, item, colour, code, live width in mm). Double-click any code to change it \u2014 the width re-measures instantly and duplicates are flagged live against the whole batch **and** everything already saved. No more regenerating a whole bulk batch to adjust one label.; **Fix-It dialog for oversize codes**: Verify now opens a repair dialog when codes are too wide for the sticker. Each one gets ranked suggestions \u2014 tidy separators, shortened, or a compact numeric code (~19 mm instead of ~55 mm) \u2014 every suggestion pre-checked to be unique, plus a type-your-own field with a live width meter and a **Fix all automatically** button.; **Manual edits are protected**: a code you edited by hand is saved as locked, and bulk \"Regenerate (overwrite existing)\" keeps it (right-click a row to lock/unlock).",
+  "release_date": "2026-08-14",
+  "checksum_sha256": "9b51f8e083fc959fb4a7cf811b26f5ffab1f3ca8030d5e00d6c9312bf1e5d1f2"
 }
