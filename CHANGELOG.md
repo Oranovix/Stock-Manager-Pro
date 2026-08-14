@@ -7,6 +7,12 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.17] - 2026-08-14
+
+
+### Fixed — Update installer "Access is denied" for good (two real causes found)
+- Diagnosing the failing machine revealed **two** independent file-lockers: (1) the app process could silently keep running for minutes after its window closed (a background cloud sync stuck in the network layer held it alive), and (2) **another program — Chrome in this case — had one of the app's DLLs loaded**, which no amount of closing the app can release. Now: the app **guarantees its process exits** the moment you close it, and the installer **clears the old install even when third-party programs hold files** (locked files are moved aside instead of deleted — Windows allows that — and cleaned up on the following update). Updates can no longer fail with "DeleteFile failed; code 5".
+
 ## [2.13.16] - 2026-08-14
 
 
