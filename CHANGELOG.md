@@ -7,6 +7,15 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.16] - 2026-08-14
+
+
+### Fixed — Installer error "VCRUNTIME140.dll — Access is denied" during updates
+- Installing an update while the app was still closing (or still open) failed with "DeleteFile failed; code 5". The installer now **waits for the app to finish closing and then closes any leftover instance automatically** before copying files — updates install cleanly every time, whether started from the in-app updater or by running the setup manually. (If you hit this on the current update: close Stock Manager Pro fully, then click "Try again" — never "Skip this file".)
+
+### Added — Sell History: record custom sales and purchases
+- New **+ Sale** button records a sale made outside the system (e.g. a repair service); **+ Purchase** records a buy/expense. Both appear in the daily record — purchases shown in red with a minus — and can be removed via right-click. New **Purchases** and **Net** totals on the tab, in each day's summary line, and in the PDF report.
+
 ## [2.13.15] - 2026-08-14
 
 
