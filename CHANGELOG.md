@@ -7,6 +7,14 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.18] - 2026-08-14
+
+
+### Added — Sell History cleans itself up when a sale is reverted
+- **Parts**: if you stock an item back in on the **same day** it was sold, that sale disappears from the Sell History automatically (a partial re-stock reduces the quantity instead). Restock deliveries never touch real sales — a stock-in on a later day, or before that day's sales, changes nothing.
+- **Devices**: marking a sold device **Back to Stock** removes that sale from the history automatically; selling it again later counts normally.
+- The Transactions page still keeps the complete raw movement history — only the Sell History (and its PDF report) shows the cleaned-up sales picture.
+
 ## [2.13.17] - 2026-08-14
 
 
