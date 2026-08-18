@@ -1,7 +1,7 @@
 {
-  "version": "2.13.19",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.19/StockManagerPro-2.13.19-setup.exe",
-  "release_notes": "Right-click any sale (part or device) in the Sell History and choose **\"Not a sale \u2014 remove from history\"** \u2014 for cases the automatic cleanup can't know about, like an accidental sale stocked back in on a later day. The entry disappears from the daily record, the totals and the PDF report. Changed your mind? The right-click menu also offers **\"Restore removed sales\"** to bring every override back. As always, the Transactions page keeps the full raw movement history.",
-  "release_date": "2026-08-14",
-  "checksum_sha256": "9663a796fc2d20cb5aa8d3d6e9eabb13fab411a524ef23309a50b471234df02d"
+  "version": "2.13.20",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.20/StockManagerPro-2.13.20-setup.exe",
+  "release_notes": "A new **Repairs** tab (under Sales) replaces the daily repair Excel sheet. One row per repair \u2014 device (picked from your phone models or free text), service (linked to part types, or free text like \"software\"), price, optional customer and status for devices that stay overnight. The price **auto-suggests from the last repair of the same device + service**, so pricing stops being a guess.; **Parts connect to real inventory**: pick a part from stock and it's booked out automatically at your buy cost (hidden from Sell History so it never double-counts as a part sale \u2014 the note carries a `[REPAIR #id]` tag in Transactions), or record an **external part** with its cost and **who paid for it** \u2014 shop or technician.; **Settlement**: the KPI strip shows the live split for the selected range \u2014 revenue, parts cost, profit, and each side's payout (profit share **plus** refund of the parts that side paid). **Close Settlement** locks those repairs so paid days can never change silently; the Settlements dialog lists every closed period and can reopen one. Payouts always add up to the money taken in.",
+  "release_date": "2026-08-18",
+  "checksum_sha256": "4ae690a6dbfd5ea89461c68dbe38506770e014b96a39cc60af2e7706d5804f1d"
 }
