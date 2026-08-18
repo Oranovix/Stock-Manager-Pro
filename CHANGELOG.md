@@ -7,8 +7,13 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.13.21] - 2026-08-18
+## [2.13.22] - 2026-08-18
 
+
+### Fixed — Sell History: stock-outs without a note vanished
+- Since v2.13.20, parts stocked out **without a note** (the normal case for quick stock-outs) no longer appeared in Sell History — the repairs-exclusion filter accidentally dropped every entry with an empty note. Fixed; nothing was lost — all affected sales (including today's and past days') reappear automatically, because the history is always computed live from the transactions log. Analytics revenue recovers with it, since it reads the same source.
+
+## [2.13.21] - 2026-08-18
 
 ### Added — Sales: scan-to-cart and professional A4 invoices
 - The POS search box is now **scanner-first**: scan a product barcode and it lands straight in the cart, ready for the next scan — no more picking from the list (typing a name still works exactly as before). Scanning a real code that's out of stock tells you so instead of doing nothing.
