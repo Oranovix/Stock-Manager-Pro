@@ -7,6 +7,30 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.20] - 2026-08-18
+
+
+
+### Added — Repairs tab: daily repair log with owner/technician profit split
+- A new **Repairs** tab (under Sales) replaces the daily repair Excel sheet. One row per repair — device (picked from your phone models or free text), service (linked to part types, or free text like "software"), price, optional customer and status for devices that stay overnight. The price **auto-suggests from the last repair of the same device + service**, so pricing stops being a guess.
+- **Parts connect to real inventory**: pick a part from stock and it's booked out automatically at your buy cost (hidden from Sell History so it never double-counts as a part sale — the note carries a `[REPAIR #id]` tag in Transactions), or record an **external part** with its cost and **who paid for it** — shop or technician.
+- **Settlement**: the KPI strip shows the live split for the selected range — revenue, parts cost, profit, and each side's payout (profit share **plus** refund of the parts that side paid). **Close Settlement** locks those repairs so paid days can never change silently; the Settlements dialog lists every closed period and can reopen one. Payouts always add up to the money taken in.
+- **Configurable split** in Shop Settings → Repairs Module: technician share % (default 50/50), technician & owner display names, and a toggle to hide the tab entirely (white-label module, like Phones).
+- **Repair Settlement PDF**: branded report with the job list, the split breakdown and both payouts — for a closed settlement or as a live preview of the open repairs.
+- Deleting an open repair or removing its part **returns stock parts to inventory automatically**. Settled repairs are locked read-only. Full EN/DE/AR localization; schema V31.
+
+### Added — Contracts tab: buy & sell contracts as professional PDFs
+- A new **Contracts** tab (under Sales): create a **Purchase contract** when buying a used device from a person, or a **Sales contract** when selling to a customer. Auto-numbered (BUY-2026-0001 / SELL-2026-0001), searchable, double-click for the PDF. The PDF is a complete signed-contract layout: your shop header, both parties (with ID/phone/address), device with serial/IMEI and condition, agreed price, warranty on sales, proper legal clauses (German or English following your shop language) and signature lines.
+
+### Added — Devices: customisable PDF reports (Pro)
+- The **Report PDF** button in every device tab now opens options: all / in-stock only / sold only, group by model or brand, and an "include buy prices" toggle — so you can print an internal owner report or a shareable list without your purchase costs.
+
+### Changed — Device unit table: in-stock first, sold separated
+- When you select a model, its units now list **in-stock (and reserved) first**, with all **sold units under their own "SOLD (n)" separator** — much easier to read and work with.
+
+### Added — Price Catalog report
+- New **Price Catalog** card in Reports: every part type with its models, colours and selling prices, grouped by category — ready to share or use as the source for a web shop.
+
 ## [2.13.19] - 2026-08-14
 
 
