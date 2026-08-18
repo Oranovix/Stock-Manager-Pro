@@ -1,7 +1,7 @@
 {
-  "version": "2.13.21",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.21/StockManagerPro-2.13.21-setup.exe",
-  "release_notes": "The POS search box is now **scanner-first**: scan a product barcode and it lands straight in the cart, ready for the next scan \u2014 no more picking from the list (typing a name still works exactly as before). Scanning a real code that's out of stock tells you so instead of doing nothing.; New **branded A4 invoice** alongside the 80mm receipt: bill-to block with the customer's phone/email/address, invoice number and date, line items with barcodes, discount and a highlighted total. After checkout you choose **Receipt (80mm) / Invoice (A4) / none**, and every sale row has a new Invoice button \u2014 generated in the background.; **Double-click a repair** to open an operations popup like the product dialogs: edit, add stock/external parts, change status, export its label, or delete. Settled repairs show as locked with label export only.",
+  "version": "2.13.22",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.22/StockManagerPro-2.13.22-setup.exe",
+  "release_notes": "Since v2.13.20, parts stocked out **without a note** (the normal case for quick stock-outs) no longer appeared in Sell History \u2014 the repairs-exclusion filter accidentally dropped every entry with an empty note. Fixed; nothing was lost \u2014 all affected sales (including today's and past days') reappear automatically, because the history is always computed live from the transactions log. Analytics revenue recovers with it, since it reads the same source.",
   "release_date": "2026-08-18",
-  "checksum_sha256": "8fee70deec8a0c40dfe1a0f250304321f88357ddd0a577ed68be498e681e90ad"
+  "checksum_sha256": "d6d83f65d54844c4030cfcb6f7c52cdaa1dad8faf9d5e7e3f09600ac54a7b6ab"
 }
