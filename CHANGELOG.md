@@ -7,6 +7,43 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
+## [2.13.21] - 2026-08-18
+
+
+### Added — Sales: scan-to-cart and professional A4 invoices
+- The POS search box is now **scanner-first**: scan a product barcode and it lands straight in the cart, ready for the next scan — no more picking from the list (typing a name still works exactly as before). Scanning a real code that's out of stock tells you so instead of doing nothing.
+- New **branded A4 invoice** alongside the 80mm receipt: bill-to block with the customer's phone/email/address, invoice number and date, line items with barcodes, discount and a highlighted total. After checkout you choose **Receipt (80mm) / Invoice (A4) / none**, and every sale row has a new Invoice button — generated in the background.
+
+### Added — Repairs: operations popup and ticket labels
+- **Double-click a repair** to open an operations popup like the product dialogs: edit, add stock/external parts, change status, export its label, or delete. Settled repairs show as locked with label export only.
+- New **Labels** button (like the device tabs): select repairs and export **barcode ticket stickers** (RP-codes, YunPrint format) so every customer device in the shop is identifiable at a glance.
+
+### Changed — Contracts: redesigned PDF
+- The contract PDF got a full professional redesign: side-by-side seller/buyer panels, a bordered device panel, a highlighted agreed-price bar, numbered clauses, an accent-ruled note and boxed signature fields.
+
+### Changed — Professional icons everywhere, no more emojis
+- A new set of 48 professionally designed line icons replaces every emoji in the app — dashboard cards and buttons, menus, filters, search bars, badges, empty states and all EN/DE/AR texts. Icons recolor with your theme.
+
+### Added — Inventory: one-click KPI filters and product operations popup
+- Click the **Low Stock** or **Out of Stock** dashboard card to instantly filter the table to those items; the count cards clear the filter.
+- **Double-click a product** for an operations popup: stock in/out, adjust, edit, view transactions, delete.
+
+### Added — Purchase Orders: order details, partial receiving, low-stock reorder
+- **Double-click any order** to see everything on it: line items with costs, totals and received counts, editing while drafting, and **per-line partial receiving** — receive what actually arrived, the rest stays open.
+- Adding an item **prefills its cost from the supplier's price list**, falling back to your item cost.
+- New **Reorder Low Stock** button: one click builds a draft order for every item at or below its minimum, with refill quantities and known costs.
+- All order actions now run in the background — receiving a large delivery can't freeze the app.
+
+### Fixed — Suppliers & Price Lists connected properly
+- The supplier **item & price mapping** was unreachable — now every supplier row has a Manage Items button (double-click works too). These prices feed the purchase-order cost prefill.
+- **Bulk markup** was updating one row at a time (slow freeze on cloud sync); it's now a single instant operation, and apply/add-all/markup run in the background.
+
+### Fixed — Analytics revenue now matches Sell History
+- The Revenue KPI and Sales section now use the **same unified source as the Sell History tab** — parts sold over the counter, device sales and manual entries, with the smart same-day netting applied. Numbers finally reconcile across the app. Units Sold shows real unit counts, and the header gained a refresh button.
+
+### Added — Help: complete guide with search
+- Help now covers every module — Sales & POS, Sell History, Repairs, Contracts, Devices, Customers, Purchasing and Cloud Sync — in English, German and Arabic, plus a **search box** that finds the right section by content.
+
 ## [2.13.20] - 2026-08-18
 
 
