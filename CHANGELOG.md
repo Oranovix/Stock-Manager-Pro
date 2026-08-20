@@ -7,7 +7,56 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.13.22] - 2026-08-18
+## [2.13.23] - 2026-08-20
+
+
+### Added — Multi-PC accountability (Activity Log)
+- Every significant change — stock in/out/adjust, sales, sale voids, devices sold or returned to stock, repairs added or deleted — is now recorded in a shared **Activity Log** stamped with the name of the PC that made it. Since all your PCs share one cloud database, this finally answers "who changed what, on which PC, when". Open it via **Admin → About → Activity Log** (filter by PC or action), and name each PC under **Admin → Shop Settings → This PC's name**.
+
+### Added — Complete, searchable in-app Help
+- The **Help** window now covers every feature — Sales/POS, Sell History (with profit & the Z-report), Repairs (with WhatsApp notify), Contracts, Devices, Customers (360° profile), Returns, Purchasing (with the PO PDF), Inventory Audit, Global Search, Warranty lookup, Cloud Sync, Logs & Activity, and a corrected keyboard-shortcuts list — with a search box across all of it. The About screen now shows the real installed version (no longer stuck on "v1.0").
+
+### Fixed — polish & correctness
+- Removed a leftover developer "preview update" button that could show a fake update notice; the Docs/Changelog/Report-a-bug/Feedback links now point at the real project pages.
+- Unified the two undo mechanisms into one, so the post-operation **Undo** toast and **Ctrl+Z** can no longer double-undo the same change.
+- Finished the icon overhaul: the last stray emoji are gone from alerts, badges, buttons and toasts (replaced with the app's line-icon style).
+- Internal robustness: error paths now log properly instead of printing, and a previously silent database fallback is now logged.
+
+### Added — Repairs count in Sell History, profit everywhere
+- **Completed (DONE) repairs now appear in Sell History** as their own "Repair" entries on their day, so one screen finally answers "what did the shop take in today?". The repair price counts as revenue; the parts it consumed count as cost. Parts booked out for a repair are still kept out (so nothing double-counts), and the owner/technician split stays in the Repairs tab. Repairs can be marked "Not a sale" like any other entry.
+- **Profit is now shown alongside revenue** — a new PROFIT column and KPI in Sell History (green/red), profit in each day's header, a profit column and totals in the daily PDF, and a PROFIT executive KPI in Analytics. Profit = what you sold minus what it cost you (part cost, device buy price, repair parts), from the same unified source across the whole app.
+
+### Added — Automatic backups, on by default
+- The app now takes an **automatic local backup** every day and keeps ~30 days of them, out of the box. The cloud is a live copy, not a backup — a bad edit syncs everywhere in seconds — so this is a safety net that just works. You can still change the interval, retention or turn it off in Admin → Shop Settings, and your choice is respected from then on.
+
+### Added — Purchase order PDF
+- A branded **PDF button** on every purchase order (supplier details, line items with costs, order total, notes) — print it or send it to your supplier instead of only flipping a status.
+
+### Added — Dead-stock report
+- New **Dead Stock** report: items sitting with no sale in 60 / 90 / 180 days and the money tied up in them, grouped by how long they've been still. The companion to "Reorder Low Stock" — one says what to buy, this says what to stop buying or discount.
+
+### Added — End-of-day close (Z report)
+- New **Close Day** button in Sell History: pick a day, optionally type the cash counted in the register, and get a one-page end-of-day report — revenue and profit by type, purchases, net, a cash reconciliation (the difference shown in red when it doesn't match), and the full list of the day's entries.
+
+### Added — Global search (Ctrl+K)
+- Press **Ctrl+K** anywhere for one search box over products, customers, repairs, contracts, devices and purchase orders — type a few letters and jump straight there. Products deep-select in the table; customers open their full profile.
+
+### Added — Warranty lookup by serial
+- Type or scan a **serial / IMEI** into the global search and get an instant warranty card: when it was sold and to whom, whether it's still under warranty (days left, in green or red), and how many repairs are on record. A 5-second answer instead of digging through papers.
+
+### Added — Customer profile (360° view)
+- A **Full Profile** button on each customer (and from a global-search customer hit) shows everything about them in one place: lifetime spend, how many sales / repairs / contracts, when you last saw them, and a tabbed history of every sale, repair and contract.
+
+### Added — WhatsApp "ready for pickup" notification
+- When a repair is ready, the repair's operations popup has a **Notify customer (WhatsApp)** button: one click opens WhatsApp with a ready-made message to the customer's number ("Hello …, your … is ready for pickup"). Uses their saved phone if there is one, otherwise asks. No setup, no cost.
+
+### Added — Repairs: service price list (standard prices)
+- New **Prices** button on the Repairs tab: set a standard price per **model × part type** ("S22 Ultra LCD = 120") or a **flat price for a service** on any device ("Software = 25"). When you add a repair, the price fills in automatically from the list (shown as "Standard price"); if a combination isn't listed, the last charged price is suggested as before — and you can always override either.
+- **Fill from history** seeds the whole list with one click: for every combination not listed yet, the last price you actually charged is taken over. Your manual prices are never overwritten.
+- Double-click a row to load it into the editor; prices are edited in place, duplicates are impossible (case-insensitive for service names). Schema V32.
+
+### Added — Repairs: analytics
+- New **Analytics** button on the Repairs tab: pick a range (30/90 days, this year, all time) and see totals (repairs, revenue, profit, average price, average profit) plus three views — **By service** (which repairs earn the most, average price and margin each), **By device** (most-repaired models), and **Monthly** (count, revenue, parts, profit and both payouts per month). Real numbers for planning parts purchases and prices instead of guessing.
 
 
 ### Fixed — Sell History: stock-outs without a note vanished
