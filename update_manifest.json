@@ -1,7 +1,7 @@
 {
-  "version": "2.13.22",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.22/StockManagerPro-2.13.22-setup.exe",
-  "release_notes": "Since v2.13.20, parts stocked out **without a note** (the normal case for quick stock-outs) no longer appeared in Sell History \u2014 the repairs-exclusion filter accidentally dropped every entry with an empty note. Fixed; nothing was lost \u2014 all affected sales (including today's and past days') reappear automatically, because the history is always computed live from the transactions log. Analytics revenue recovers with it, since it reads the same source.",
-  "release_date": "2026-08-18",
-  "checksum_sha256": "d6d83f65d54844c4030cfcb6f7c52cdaa1dad8faf9d5e7e3f09600ac54a7b6ab"
+  "version": "2.13.23",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.13.23/StockManagerPro-2.13.23-setup.exe",
+  "release_notes": "Every significant change \u2014 stock in/out/adjust, sales, sale voids, devices sold or returned to stock, repairs added or deleted \u2014 is now recorded in a shared **Activity Log** stamped with the name of the PC that made it. Since all your PCs share one cloud database, this finally answers \"who changed what, on which PC, when\". Open it via **Admin \u2192 About \u2192 Activity Log** (filter by PC or action), and name each PC under **Admin \u2192 Shop Settings \u2192 This PC's name**.; The **Help** window now covers every feature \u2014 Sales/POS, Sell History (with profit & the Z-report), Repairs (with WhatsApp notify), Contracts, Devices, Customers (360\u00b0 profile), Returns, Purchasing (with the PO PDF), Inventory Audit, Global Search, Warranty lookup, Cloud Sync, Logs & Activity, and a corrected keyboard-shortcuts list \u2014 with a search box across all of it. The About screen now shows the real installed version (no longer stuck on \"v1.0\").; Removed a leftover developer \"preview update\" button that could show a fake update notice; the Docs/Changelog/Report-a-bug/Feedback links now point at the real project pages.",
+  "release_date": "2026-08-20",
+  "checksum_sha256": "678d0e56cd1c20527a1feeecaa92a3430c85c4b52732353bd7d831007331c00f"
 }
