@@ -7,7 +7,47 @@ Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ## [Unreleased]
 
-## [2.13.23] - 2026-08-20
+## [2.13.24] - 2026-08-22
+
+
+
+### Added — Easy POS: quick-pick buttons
+- The Sales POS now has a **Quick picks panel**: your own grid of big colored buttons for the things you sell every day. Two kinds of buttons — an **inventory item** (always shows the item's *live* price and goes into the cart like a scanned product) or a **service with its own price** (Software fix, SIM unlock, data transfer…) that records the sale in one tap and lands in Sell History, profit and the Z-report like any other sale. Click **Edit** to add, recolor, reorder (◀ ▶) or delete buttons; in **Simple design** the panel is automatically bigger for fast tap-first selling.
+
+### Added — Stock In/Out: a dedicated scan-first page
+- A brand-new **Stock In/Out** tab (also in Simple design) built for the daily "goods arrived / goods taken" moment: scan a barcode or type to search, see the item with its **current stock in big color** and its minimum, set a quantity and note, and hit one of three big buttons — **STOCK IN** (green), **STOCK OUT** (red) or **SET COUNT** (blue). Every booking supports Ctrl+Z undo, and a **Today's movements** list below shows everything booked today with before→after stock.
+
+### Added — Petty cash (drawer money) with a reconciled Z-report
+- New **Cash in/out** button in Sell History: record drawer money that moves outside of sales — change float in, courier paid, cash taken to the bank — each entry stamped with the person and PC. The **Close Day (Z-report)** now includes these drawer movements: Expected = revenue − purchases + cash in − cash out, then Counted and the Difference, so the drawer finally reconciles to the cent. Home shows today's net drawer cash as its own card, and every entry appears in the Activity Log.
+
+
+### Added — Start tab: a professional Home dashboard
+- The app now opens on a new **Home** tab: today's revenue, profit, sales and finished repairs at a glance, one-click **quick actions** (New sale, New repair, Quick scan, Sell history, Inventory), a **needs-attention strip** (low/out-of-stock, repairs ready for pickup, repairs waiting too long, open purchase orders — each card jumps to the right page) and the latest entries from the Activity Log. Analytics stays the deep-dive; Home is the "good morning" screen.
+
+### Added — Per-person login with roles
+- Optional **user accounts** (Admin → Shop Settings → Users & Mode): each person gets a name, a role — **Owner / Assistant / Technician** — and a 4–8-digit PIN (stored hashed, never plaintext). When enabled, the app asks **"Who is working?"** at startup, shows the person in the header, and stamps every Activity-Log entry with their name in addition to the PC — real accountability across the shop. Only the owner can open Admin; the last active owner can never be locked out.
+
+### Added — Simple & Professional designs
+- Every PC can now run one of **two designs**: **Professional** (everything, as today) or **Simple** — only the daily-work tabs (Home, POS, Quick scan, Sell history, Repairs, Customers), automatically enlarged UI, no cost data. Assistants are switched to Simple automatically when they log in. Set per PC under Users & Mode; takes effect after restart.
+
+### Added — Calculator in the header
+- A **calculator icon** in the header (and Ctrl+Alt+C) opens a professional calculator that **stays on top** while you work: standard keys with full keyboard input and %, plus two shop tabs — **Margin** (cost + % ⇄ sell price with live profit) and **Change** (total vs cash given, shortage shown in red). Copy the result with one click; it keeps its state while open.
+
+### Added — Notification bell knows the whole shop
+- The header bell now also warns about **repairs sitting READY for pickup too long** (threshold configurable, default 2 days) and **open purchase orders** — click an entry to jump straight to the page. Stock alerts (low / expiring / expired) work as before.
+
+
+
+### Added — Matrix: Excel tools (copy/paste, export, bulk edit, quick count, heat-map)
+- **Copy & paste with real Excel** — select cells and press **Ctrl+C**: the block lands on the clipboard exactly like Excel (money without currency symbols). Copy numbers in Excel and press **Ctrl+V** on the matrix: stock, min-stock, order, sell and cost cells update in place, with a confirmation showing how many cells will change and a single **Ctrl+Z** undo for the whole paste. Stock changes go through the normal adjustment path, so everything is logged and visible in the Activity Log.
+- **Export to Excel / CSV** — the whole matrix (models × part types with stock, sell and cost) as a styled `.xlsx` (frozen header + model column, auto-filter) or CSV, from the new **Tools** menu.
+- **Bulk edit selection** — select any cells and run one operation over all of them: set stock, add/subtract stock, set min-stock, set sell price, **sell = cost + margin %**, round prices (to .99 / whole / next 5), change prices by an amount or percent, copy cost → sell (cost operations stay PIN-gated). One undo reverts the whole batch.
+- **Quick count (stocktake)** — a counting sheet for the selection or the whole tab: type what's on the shelf, variances show live in green/red with a running summary, **Commit** adjusts every difference in one go (all logged).
+- **Stock heat-map** — one toggle colours every stock cell red (empty) / amber (at or below min-stock) / green (healthy), so the whole grid shows its health at a glance.
+- **Cell notes** — right-click any cell → **Note…**: an Excel-style comment ("waiting on supplier"), shown as a small orange corner marker with the text on hover.
+- **Sort by any column** — right-click a stock/price cell → sort the models by that column (highest or lowest first), per part type; one click restores the normal order.
+- **Model value at a glance** — hover a model name to see its total units and inventory value across all its part types.
+- Schema V33 (`item_notes`); full EN/DE/AR localization; 19 new backend tests.
 
 
 ### Added — Multi-PC accountability (Activity Log)
