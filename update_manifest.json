@@ -1,7 +1,7 @@
 {
-  "version": "2.14.1",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.14.1/StockManagerPro-2.14.1-setup.exe",
-  "release_notes": "The v2.14.0 features (user logins, POS quick-pick tiles, petty cash, payment methods, deposits, repair price list, matrix notes) crashed or stayed empty on cloud-synced shops: their new tables never reach a replica automatically. All tables have been applied to the cloud, **and** the app now self-heals \u2014 if a needed table is missing it is created on the spot from the built-in schema and the action simply succeeds. This class of error can't come back for future features.; The part-type filter chips in the Counter's SELL view were clipped to half height whenever they overflowed (the scrollbar ate into the row). The chip row now reserves space for a slim scrollbar below the chips, and the Favorites chip uses a proper star icon instead of an emoji.",
+  "version": "2.15.0",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.15.0/StockManagerPro-2.15.0-setup.exe",
+  "release_notes": "A new **STOCKTAKE** mode next to SELL / STOCK IN / STOCK OUT / SET COUNT: scan or search items one after another to count what's on the shelf \u2014 every scan of the same item adds +1 (or use the \u2212 / + row controls for bulk). The sheet shows each item's **counted vs system stock with a colored difference** (green = matches, red = missing, amber = surplus), a live summary, and a **Re-check stock** button that refreshes the system numbers if another PC sold something mid-count. **Commit differences** adjusts only the items that differ \u2014 every change logged in the Activity Log, and one **Ctrl+Z** undoes the whole stocktake.; The part-type filter chips could still be clipped: the row was a fixed-height scroll strip and any overflow squeezed the chips. The chips now **wrap onto additional lines** instead of scrolling \u2014 every chip is always fully visible and tappable, with no scrollbar at all.",
   "release_date": "2026-08-24",
-  "checksum_sha256": "4a26842d189be03cf74d14acfc31d9d70460d6ae7ceb0398983cadae2b880f83"
+  "checksum_sha256": "f8d3f4dae2c5eff6f484e90734f78703e96e6bdf000a44553ca5952b215983f5"
 }
