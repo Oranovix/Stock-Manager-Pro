@@ -14,6 +14,15 @@ So the number itself tells you what kind of release it is: a patch is safe to in
 
 ## [Unreleased]
 
+## [2.14.1] - 2026-08-24
+
+
+### Fixed — "no such table: users / pos_tiles" on cloud-synced PCs
+- The v2.14.0 features (user logins, POS quick-pick tiles, petty cash, payment methods, deposits, repair price list, matrix notes) crashed or stayed empty on cloud-synced shops: their new tables never reach a replica automatically. All tables have been applied to the cloud, **and** the app now self-heals — if a needed table is missing it is created on the spot from the built-in schema and the action simply succeeds. This class of error can't come back for future features.
+
+### Fixed — Counter: filter chips no longer cut in half
+- The part-type filter chips in the Counter's SELL view were clipped to half height whenever they overflowed (the scrollbar ate into the row). The chip row now reserves space for a slim scrollbar below the chips, and the Favorites chip uses a proper star icon instead of an emoji.
+
 ## [2.14.0] - 2026-08-24
 
 
