@@ -3,9 +3,46 @@
 All notable changes to **Stock Manager Pro** are documented here.
 Format follows [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+**Versioning policy** (semantic, from v2.14.0 on):
+- **MAJOR** (`3.0.0`) — a new generation of the app (big redesigns, breaking workflow changes).
+- **MINOR** (`2.15.0`, `2.16.0`, …) — any release that adds or changes features. This is the normal release.
+- **PATCH** (`2.14.1`, …) — bug-fix-only releases / hotfixes. Nothing new, only repairs.
+
+So the number itself tells you what kind of release it is: a patch is safe to install immediately, a minor brings new things, a major changes how the app feels. (Releases up to v2.13.24 incremented the patch number for everything.)
+
 ---
 
 ## [Unreleased]
+
+## [2.14.0] - 2026-08-24
+
+
+### Added — Payment methods: cash, card, or split
+- Every sale at the Counter can now be paid **Cash**, **Card**, or **Split** (you enter the cash part, the card part fills itself). The **Close Day (Z-report)** shows a **Payments by method** section, and the drawer reconciliation automatically leaves card money out — the counted drawer matches what's physically in it, to the cent.
+
+### Added — Deposits & partial payments
+- Customers can now leave money up front. Take a **deposit** in the new-repair dialog (goes into the drawer today, applied automatically at pickup) — and when a customer with deposit balance is selected at the Counter, a **Use deposit** chip appears and pays part of the sale with one tap. Every deposit movement is paired with a drawer entry, stamped with the person and PC, and visible in the Activity Log — so the Z-report always reconciles.
+
+### Added — Discount protection
+- A new **Discount PIN limit** in Users & Mode: discounts above the limit ask for the **owner PIN** at checkout (owners pass without asking; 0 turns the gate off).
+
+### Added — The Counter: one workstation tab for selling and stock
+- A new **Counter** tab (right under Home, and the centerpiece of the Simple design) puts the whole counter workflow behind **one scan bar**: segmented modes **SELL · STOCK IN · STOCK OUT · SET COUNT**. In SELL, your quick-pick buttons, the product list and the cart (customer, discount, note, big Complete Sale) live on one screen — sales go through the exact same engine as the POS, receipts included. In the stock modes, scanning shows the item's live stock in color and one big color-coded action button books it, undo-able and logged. A live strip at the bottom shows today's sales, stock movements and drawer cash. The Counter **replaces the separate Stock In/Out tab**; the POS dialog remains available from the Sales page.
+
+### Changed — Home is now a real dashboard
+- The Start tab got a professional redesign: a **hero header** with your greeting, date and shop name on an accent-colored card, KPI cards that now show **trends vs yesterday** (▲/▼ with percent) and **7-day sparklines**, a **This week** revenue chart with today highlighted, **icon tiles** for the quick actions, and the activity feed with a matching line icon per entry type.
+
+### Changed — Header: professional user identity
+- The signed-in person now appears as a proper **user pill** — a round avatar with a person icon and the name in the active theme's accent color (emerald in Emerald Dark, blue in Ocean, …) — cleanly spaced from the theme toggle instead of colliding with it.
+
+### Added — Rich search results under the header search
+- Typing in the header search no longer answers with just a count: a **results panel** opens under the search bar with the top matches across products, customers, devices, repairs, contracts and purchase orders — each with its type icon, details line and a colored type chip. Click a result to jump straight to it; Ctrl+K still opens the full search.
+
+### Changed — Simple design is now truly touch-first
+- The Simple design got its own styling layer on top of the theme (not just scaling): taller sidebar entries and primary buttons with larger text, a bigger search bar, larger table text, an accent marker on the active tab, and bigger Home action tiles — built for fast tapping at the counter.
+
+### Changed — Popups match the app
+- Message boxes and tooltips are now styled by the theme (card background, accent-highlighted default button) so every confirmation and warning looks like part of the app.
 
 ## [2.13.24] - 2026-08-22
 
