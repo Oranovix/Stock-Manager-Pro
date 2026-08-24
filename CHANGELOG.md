@@ -14,8 +14,16 @@ So the number itself tells you what kind of release it is: a patch is safe to in
 
 ## [Unreleased]
 
-## [2.14.1] - 2026-08-24
+## [2.15.0] - 2026-08-24
 
+
+### Added — Counter: STOCKTAKE mode (the 5th button)
+- A new **STOCKTAKE** mode next to SELL / STOCK IN / STOCK OUT / SET COUNT: scan or search items one after another to count what's on the shelf — every scan of the same item adds +1 (or use the − / + row controls for bulk). The sheet shows each item's **counted vs system stock with a colored difference** (green = matches, red = missing, amber = surplus), a live summary, and a **Re-check stock** button that refreshes the system numbers if another PC sold something mid-count. **Commit differences** adjusts only the items that differ — every change logged in the Activity Log, and one **Ctrl+Z** undoes the whole stocktake.
+
+### Fixed — Counter: filter chips fully visible
+- The part-type filter chips could still be clipped: the row was a fixed-height scroll strip and any overflow squeezed the chips. The chips now **wrap onto additional lines** instead of scrolling — every chip is always fully visible and tappable, with no scrollbar at all.
+
+## [2.14.1] - 2026-08-24
 
 ### Fixed — "no such table: users / pos_tiles" on cloud-synced PCs
 - The v2.14.0 features (user logins, POS quick-pick tiles, petty cash, payment methods, deposits, repair price list, matrix notes) crashed or stayed empty on cloud-synced shops: their new tables never reach a replica automatically. All tables have been applied to the cloud, **and** the app now self-heals — if a needed table is missing it is created on the spot from the built-in schema and the action simply succeeds. This class of error can't come back for future features.
