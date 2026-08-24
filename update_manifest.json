@@ -1,7 +1,7 @@
 {
-  "version": "2.14.0",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.14.0/StockManagerPro-2.14.0-setup.exe",
-  "release_notes": "Every sale at the Counter can now be paid **Cash**, **Card**, or **Split** (you enter the cash part, the card part fills itself). The **Close Day (Z-report)** shows a **Payments by method** section, and the drawer reconciliation automatically leaves card money out \u2014 the counted drawer matches what's physically in it, to the cent.; Customers can now leave money up front. Take a **deposit** in the new-repair dialog (goes into the drawer today, applied automatically at pickup) \u2014 and when a customer with deposit balance is selected at the Counter, a **Use deposit** chip appears and pays part of the sale with one tap. Every deposit movement is paired with a drawer entry, stamped with the person and PC, and visible in the Activity Log \u2014 so the Z-report always reconciles.; A new **Discount PIN limit** in Users & Mode: discounts above the limit ask for the **owner PIN** at checkout (owners pass without asking; 0 turns the gate off).",
+  "version": "2.14.1",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.14.1/StockManagerPro-2.14.1-setup.exe",
+  "release_notes": "The v2.14.0 features (user logins, POS quick-pick tiles, petty cash, payment methods, deposits, repair price list, matrix notes) crashed or stayed empty on cloud-synced shops: their new tables never reach a replica automatically. All tables have been applied to the cloud, **and** the app now self-heals \u2014 if a needed table is missing it is created on the spot from the built-in schema and the action simply succeeds. This class of error can't come back for future features.; The part-type filter chips in the Counter's SELL view were clipped to half height whenever they overflowed (the scrollbar ate into the row). The chip row now reserves space for a slim scrollbar below the chips, and the Favorites chip uses a proper star icon instead of an emoji.",
   "release_date": "2026-08-24",
-  "checksum_sha256": "31f512e6dee0916743d52b70e6e2893255e4408d01b9f09fb9f724310095c483"
+  "checksum_sha256": "4a26842d189be03cf74d14acfc31d9d70460d6ae7ceb0398983cadae2b880f83"
 }
