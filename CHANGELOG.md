@@ -14,6 +14,31 @@ So the number itself tells you what kind of release it is: a patch is safe to in
 
 ## [Unreleased]
 
+## [2.16.0] - 2026-09-12
+
+
+### Fixed — QA pass: latent crashes, missing translation, test isolation
+- **Repairs → Add stock part** could crash with `NameError: QDoubleSpinBox` when opening the part picker — the widget was used without being imported. Now imported alongside the other widgets.
+- **Barcode generation** could crash a second time while reporting a failure (`_log` was never defined in the service); a logger is now created so the real error is logged instead.
+- **Reports page** shadowed the global `THEME` with a local import; **Device sold-history dialog** referenced `QWidget` before importing it. Both cleaned up; `ruff` now reports zero undefined-name / redefinition findings across the app.
+- **Repair label dialog**: the "{n} selected" count is now translated (EN/DE/AR) instead of always showing English.
+- **German alerts**: "{n} Alarm(e) · AUSVERKAUFT" and "{n} Bestandswarnung(en)" now read correctly for one and many.
+- **Tests**: `test_config_persistence` uses its own temporary database so it passes regardless of suite ordering; the full suite (922 tests) is green, and a headless smoke drive of every page in EN/DE/AR, all 14 themes, Simple mode, every Counter mode and all admin/tool dialogs runs without a single exception.
+
+### Added — Refunds at the Counter
+- A new **REFUND** mode at the Counter: pick from the recent sales list (or type the sale number into the scan bar), see the sale's items, set how many of each come back, choose **Back to stock** or **Write off (damaged)** and **Cash / Card**, and hit the big red REFUND. Stock returns automatically, a cash refund is recorded as drawer money out (so Close Day still reconciles), the return is linked to the original sale, and everything lands in the Activity Log.
+
+### Fixed — Matrix legend cards: long part-type names are no longer cut off
+- The part-type cards above the matrix had a fixed size, so longer names ("ORG 2-Hand Pulled (Diagnose)", "Original Oled 120HZ OEM Diagnose") were simply chopped off at the card edge. The name now **continues on the next line inside the card**, and the whole strip flexes: cards get wider when a name needs it and taller when it wraps, with every card in the row kept the same size so the strip stays a tidy grid. Hovering a card also shows the full name.
+### Fixed — Opening the app twice no longer breaks cloud sync
+- If a second copy of Stock Manager Pro was opened on the same PC (easy to do after an update, or when the window was hidden rather than closed), **both copies fought over the same local cloud cache** and every sync failed from then on with *"Failed to checkpoint WAL: database is locked"* — sync stayed broken until the extra copy was closed, and the cache file grew with every failed attempt. Clicking the app icon while it is already open now simply **brings the existing window to the front** instead of starting a second copy. If the app is genuinely stuck as a leftover background process (no window), startup is **not** blocked — you can always get back into your shop — and the log says exactly what to do.
+
+### Fixed — "Sync error" no longer turns green while sync is still broken
+- The cloud indicator in the status bar could repaint itself green ("Synced 14:50" — the time of the last *successful* sync) while syncing was in fact still failing, so a broken connection could go unnoticed for hours. An unresolved error now stays visible until a sync actually succeeds, and when the cause is a second copy of the app the tooltip says so.
+
+### Fixed — Cloud connection can no longer be lost silently
+- On one shop PC the app suddenly showed **months-old data after installing an update**: a background hiccup while reading the settings made the app fall back to built-in defaults, and a routine settings save then **overwrote the stored cloud connection (URL + key) with blanks** — every later start silently used the old local database instead of the shared cloud one. Three protections now make this impossible: a settings read that fails is **retried and loudly logged** instead of silently pretending everything is default; a config object that came from a failed read **refuses to save at all**; and no save can blank the stored cloud credentials as a side effect — only the Cloud Sync page can clear them, deliberately. The app also **recovers by itself** on the next action instead of staying on the wrong database until restart.
+
 ## [2.15.0] - 2026-08-24
 
 
