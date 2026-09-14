@@ -1,7 +1,7 @@
 {
-  "version": "2.16.0",
-  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.16.0/StockManagerPro-2.16.0-setup.exe",
-  "release_notes": "**Repairs \u2192 Add stock part** could crash with `NameError: QDoubleSpinBox` when opening the part picker \u2014 the widget was used without being imported. Now imported alongside the other widgets.; **Barcode generation** could crash a second time while reporting a failure (`_log` was never defined in the service); a logger is now created so the real error is logged instead.; **Reports page** shadowed the global `THEME` with a local import; **Device sold-history dialog** referenced `QWidget` before importing it. Both cleaned up; `ruff` now reports zero undefined-name / redefinition findings across the app.",
-  "release_date": "2026-09-12",
-  "checksum_sha256": "3536c5510e68f47fc812cf44eeb1fb5141b4011569bd5f88ce4f222a672acd07"
+  "version": "2.17.0",
+  "download_url": "https://github.com/Oranovix/stock-manager-pro/releases/download/v2.17.0/StockManagerPro-2.17.0-setup.exe",
+  "release_notes": "An item can now carry **additional barcodes** next to its main one \u2014 the supplier's old label and the new one, a packaging code, a second brand's code for the same part. **Scanning any of them finds the same item everywhere**: Counter (all modes), Quick Scan, Stock Ops, the header scanner, global search (Ctrl+K) and typed searches. Manage them in the item's edit dialog or the matrix cell dialog under **More barcodes**: scan or type a code and press **Add**, remove one, or **Make main** to swap it with the printed barcode (the old main code is kept as an extra). A code can belong to only one item \u2014 adding one that is already in use tells you exactly which item has it, and bulk barcode generation never overwrites or duplicates a code that belongs to another item as an extra.",
+  "release_date": "2026-09-14",
+  "checksum_sha256": "b85dbf8757762294cf54860815d973d750024d300b192d43bbb247d28cf3930d"
 }
