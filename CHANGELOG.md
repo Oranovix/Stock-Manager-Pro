@@ -14,6 +14,12 @@ So the number itself tells you what kind of release it is: a patch is safe to in
 
 ## [Unreleased]
 
+## [2.17.0] - 2026-09-14
+
+
+### Added — More than one barcode per item
+- An item can now carry **additional barcodes** next to its main one — the supplier's old label and the new one, a packaging code, a second brand's code for the same part. **Scanning any of them finds the same item everywhere**: Counter (all modes), Quick Scan, Stock Ops, the header scanner, global search (Ctrl+K) and typed searches. Manage them in the item's edit dialog or the matrix cell dialog under **More barcodes**: scan or type a code and press **Add**, remove one, or **Make main** to swap it with the printed barcode (the old main code is kept as an extra). A code can belong to only one item — adding one that is already in use tells you exactly which item has it, and bulk barcode generation never overwrites or duplicates a code that belongs to another item as an extra.
+
 ## [2.16.0] - 2026-09-12
 
 
