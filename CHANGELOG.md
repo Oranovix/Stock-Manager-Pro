@@ -14,6 +14,12 @@ So the number itself tells you what kind of release it is: a patch is safe to in
 
 ## [Unreleased]
 
+## [2.17.1] - 2026-09-14
+
+
+### Fixed — Log noise from the matrix cell dialog
+- Opening a matrix cell dialog on v2.17.0 wrote a Qt *"Unable to set geometry"* warning to the app log every time the **More barcodes** section grew (expand, add). Harmless for use, but noise in the Logs view. The section now sizes itself deterministically, so the warning is gone.
+
 ## [2.17.0] - 2026-09-14
 
 
