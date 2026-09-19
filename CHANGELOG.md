@@ -14,6 +14,25 @@ So the number itself tells you what kind of release it is: a patch is safe to in
 
 ## [Unreleased]
 
+## [2.18.0] - 2026-09-19
+
+
+### Added — Part types: copy the setup from another part type
+- Setting up a new part type no longer means ticking hundreds of models by hand. **Copy setup from…** (in Admin → Part Types, above the models list — and offered right in the *Add part type* dialog) takes over **which models carry the part type and in which colours** from any existing part type, for **every brand or just one** (e.g. only Samsung). Optionally it also copies the **minimum stock values** and **sell prices**. A live preview shows how many models will be included and excluded before you confirm. Models the source doesn't have are excluded from the new type — but rows that still hold stock are never removed, and stock quantities are never copied. Brands outside the chosen one stay exactly as they are.
+- **Move the stock too.** The same dialog can **move the on-hand quantities** from the source part type to the target (same model and colour): the source drops to 0 and the target gains the units. The preview tells you how many units and items will move, it asks once more before changing quantities, both sides are logged in Transactions and the Activity Log, and a move is **never counted as a sale**. Units with no matching model/colour in the target stay where they are and are reported. You can also run *only* the move, into a part type that is already set up.
+
+### Fixed — Matrix: the view no longer jumps to the top after an operation
+- After a stock operation the matrix could jump from wherever you were (typically the bottom) back to the top. The position was only restored if the rebuilt page was at least as tall as before — a page that came out even a few pixels shorter (a toolbar label collapsing, a filtered row dropping out) was left at the top. It now stays pinned to the closest position. A second cause is fixed too: a failed or superseded refresh could switch position tracking off permanently, so *every* later operation jumped until the app was restarted.
+
+### Fixed — Scanning works while a table has focus
+- The scan popup (product info with Stock IN / OUT / SET) did not open when a **table** had focus — the matrix grid's model-name column, the Transactions table and others swallowed the scanner's keystrokes. Scans are now recognised while any table or dropdown has focus, on every page. Normal typing in tables is unaffected, text fields keep their own behaviour, and on the Counter a scan always goes to the Counter.
+
+### Fixed — "Open" on a Quick Scan invoice (and every other Open PDF button)
+- The Open button could do nothing at all: any failure was silently ignored, and programs started by the app (PDF viewer, browser) inherited the app's internal library folder, which can stop them from starting. Documents are now launched cleanly, and if a file is missing or no program can open it you get a clear message and its folder is opened instead.
+
+### Fixed — Starting the app several times in a row
+- Clicking the icon repeatedly while the app was still starting (no window yet) could start several copies that damaged the local cloud cache. A second start now waits for the first one's window and brings it forward; a genuinely hung leftover process is ended automatically instead of blocking cloud sync.
+
 ## [2.17.1] - 2026-09-14
 
 
