@@ -35,6 +35,30 @@ Built for real shops that need to know **exactly what's in stock, what it's wort
 
 ---
 
+## 🎬 Walkthrough
+
+A guided, one-screen tour of a day at the shop — from the opening numbers to the counter, parts, devices, repairs and reporting.
+
+![Stock Manager Pro — run the whole shop from one screen](assets/walkthrough/01-hero.png)
+
+![Home — open to the numbers that matter, not a blank screen](assets/walkthrough/02-home.png)
+
+![Counter — one counter for the whole transaction, whatever it is](assets/walkthrough/03-counter.png)
+
+![Part Types — thousands of parts, one screen that still feels fast](assets/walkthrough/04-part-types.png)
+
+![Devices — every phone, tablet and laptop, tracked by serial](assets/walkthrough/05-devices.png)
+
+![Repairs — know what a repair actually earned, automatically](assets/walkthrough/06-repairs.png)
+
+![Sell History — one feed for everything sold today, parts and devices alike](assets/walkthrough/07-sell-history.png)
+
+![Analytics — know your numbers before anyone has to ask](assets/walkthrough/08-analytics.png)
+
+![Reports — fourteen reports, one click away, always on brand](assets/walkthrough/09-reports.png)
+
+---
+
 ## ✨ Features
 
 ### Core Inventory
