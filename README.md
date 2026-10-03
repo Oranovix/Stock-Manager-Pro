@@ -14,13 +14,13 @@ Local-first · barcode-aware · multi-PC cloud sync · trilingual (EN / DE / AR)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2F11-0078D6?style=flat-square&logo=windows)](https://github.com/Oranovix/stock-manager-pro/releases/latest)
 [![License](https://img.shields.io/badge/License-Proprietary-blue?style=flat-square)](EULA.md)
 
-[**⬇ Download the latest installer**](https://github.com/Oranovix/stock-manager-pro/releases/latest) · [Features](#-features) · [Screenshots](#-screenshots) · [Editions](EDITIONS.md) · [Changelog](CHANGELOG.md) · [Report a problem](https://github.com/Oranovix/stock-manager-pro/issues)
+[**⬇ Download the latest installer**](https://github.com/Oranovix/stock-manager-pro/releases/latest) · [Features](#-features) · [Walkthrough](#-walkthrough) · [Editions](EDITIONS.md) · [Changelog](CHANGELOG.md) · [Report a problem](https://github.com/Oranovix/stock-manager-pro/issues)
 
 </div>
 
 ---
 
-![Dashboard](assets/scr-dashboard.png)
+![Stock Manager Pro — know exactly what's in stock, what it's worth, and what sold today](assets/walkthrough/01-hero.png)
 
 ## Overview
 
@@ -74,107 +74,49 @@ Built for real shops that need to know **exactly what's in stock, what it's wort
 
 ---
 
-## 📸 Screenshots
+## 🎬 Walkthrough
 
-> Screenshots use a demo dataset.
+A guided product tour — from the opening numbers to inventory, devices, the counter and reporting. Open the interactive version in any browser: [**`walkthrough.html`**](walkthrough.html). Screenshots use a demo dataset.
 
-### Analytics Dashboard
-Real-time KPI cards (stock value at cost, revenue, transactions, low stock), a stock-health donut, value-by-brand bars, and a brand × part-type valuation pivot — all loaded asynchronously off the UI thread.
+### Analytics
+Stock value at cost, revenue and transactions, a stock-health donut and a brand × part-type valuation pivot — every figure computed live off the UI thread.
 
-![Analytics Dashboard](assets/scr-dashboard.png)
-
----
-
-### Matrix View
-The core workflow — spreadsheet-style bulk stock across model × part-type × colour, with a frozen model column, per-part-type value totals, and Low / Out / Reorder filters.
-
-![Matrix View](assets/scr-displays.png)
-
----
+![Analytics dashboard](assets/walkthrough/02-analytics.png)
 
 ### Inventory
-Searchable, filterable product table with KPI overview cards (units, low / out of stock, inventory value), status badges, and inline +1 / −1 quick-stock actions.
+A fast, filterable product table with KPI cards for units, low / out of stock and total value, status badges, and inline +1 / −1 quick-stock actions.
 
-![Inventory](assets/scr-inventory-v2.png)
+![Inventory](assets/walkthrough/03-inventory.png)
 
----
+### Part Types — matrix stock
+Every model × part-type × colour combination, priced and counted, with a frozen model column, per-part-type value totals and instant Low / Out / Reorder filters.
 
-### Phones — IMEI tracking
-Whole-device inventory tracked by IMEI: a brand × model stock grid by storage, KPIs (total / in stock / sold / avg battery / stock value), scan-to-sell, reserve, and barcode labels. *(Optional module.)*
+![Part types matrix](assets/walkthrough/04-part-types.png)
 
-![Phones](assets/scr-phones.png)
+### Devices — IMEI tracking
+Whole-device inventory by IMEI — a brand × model stock grid by storage, KPIs for in-stock / sold / average battery / stock value, scan-to-sell, reserve and barcode labels.
 
----
+![Devices — IMEI tracking](assets/walkthrough/05-devices.png)
 
 ### Sales & POS
-Cart-based point-of-sale with product picker, customer lookup, discounts, automatic PDF receipts, and edit / void with stock reversal.
+Cart-based point of sale with a product picker, customer lookup and discounts, automatic PDF receipts, and edit / void that reverses stock automatically.
 
-![Sales & POS](assets/scr-sales.png)
+![Sales and POS](assets/walkthrough/06-sales.png)
 
----
+### Purchase Orders & Suppliers
+A full PO lifecycle from DRAFT → SENT → PARTIAL → RECEIVED that auto stocks-in on receipt, backed by a supplier CRM with cost prices, lead days and ratings.
+
+![Purchase orders](assets/walkthrough/07-purchase-orders.png)
 
 ### Reports
-14 professional, branded PDF reports for **parts and phones** — inventory, valuation (at cost), low stock, transactions, sales, category performance, audit sheets, phone inventory & sold history, expiring stock, and barcode labels.
+Fourteen branded PDF reports — inventory, valuation at cost, low stock, transactions, sales, category performance, audit sheets, phone inventory & sold history, expiring stock and barcode labels.
 
-![Reports](assets/scr-reports.png)
+![Reports](assets/walkthrough/08-reports.png)
 
----
+### Quick Scan & Barcodes
+Quick Scan intercepts any USB barcode scanner with command barcodes (TAKEOUT / INSERT / CONFIRM) for hands-free counting; the built-in generator prints Code128 / EAN labels.
 
-### Transactions
-Paginated stock-movement audit log with an IN / OUT / ADJUST / Net summary strip, debounced filters, and Load-More pagination.
-
-![Transactions](assets/scr-transactions.png)
-
----
-
-### Purchase Orders
-Full PO lifecycle from DRAFT through SENT → PARTIAL → RECEIVED. Receiving a PO automatically triggers a stock-in.
-
-![Purchase Orders](assets/scr-purchase-orders.png)
-
----
-
-### Suppliers
-Supplier CRM with contact details, rating, linked inventory items, and open purchase-order count per supplier.
-
-![Suppliers](assets/scr-suppliers.png)
-
----
-
-### Audit & Stocktake
-Cycle-based stocktake with item-by-item counted-qty entry, system-vs-counted variance reporting, and a completion summary.
-
-![Audit](assets/scr-audit.png)
-
----
-
-### Price Lists
-Create and manage pricing configurations; apply a bulk percentage markup or push a list straight to live inventory.
-
-![Price Lists](assets/scr-price-lists.png)
-
----
-
-### Returns
-Process returns with RESTOCK or WRITE_OFF actions — reverses the original transaction and records the refund amount.
-
-![Returns](assets/scr-returns.png)
-
----
-
-### Quick Scan
-USB barcode-scanner interception with command barcodes (TAKEOUT / INSERT / CONFIRM) for hands-free stock counting.
-
-![Quick Scan](assets/scr-quickscan.png)
-
----
-
-### Barcode Generator
-Generate and export Code128 / EAN barcodes; batch-print labels for new stock.
-
-![Barcode Generator](assets/scr-barcode.png)
-
----
+![Quick Scan](assets/walkthrough/09-quick-scan.png)
 
 ## 🖥️ System Requirements
 
