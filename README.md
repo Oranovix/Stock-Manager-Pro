@@ -76,47 +76,62 @@ Built for real shops that need to know **exactly what's in stock, what it's wort
 
 ## 🎬 Walkthrough
 
-A guided product tour — from the opening numbers to inventory, devices, the counter and reporting. Open the interactive version in any browser: [**`walkthrough.html`**](walkthrough.html). Screenshots use a demo dataset.
+A guided product tour — from the opening numbers to the counter, parts, devices, repairs and reporting. Open the interactive version in any browser: [**`walkthrough.html`**](walkthrough.html). Screenshots use a demo dataset.
 
-### Analytics
-Stock value at cost, revenue and transactions, a stock-health donut and a brand × part-type valuation pivot — every figure computed live off the UI thread.
+### Home
+Today's revenue, profit and sales against yesterday, a 7-day trend, and a ranked list of what needs attention — low stock, devices ready for pickup and repairs waiting — the moment you open the shop.
 
-![Analytics dashboard](assets/walkthrough/02-analytics.png)
+![Home](assets/walkthrough/02-home.png)
+
+### Counter
+Sell, book stock in or out, run a stocktake or process a refund — all behind one scan bar, with a live cart, cash / card / split payment and a part-type chip filter for the busy rush.
+
+![Counter](assets/walkthrough/03-counter.png)
 
 ### Inventory
 A fast, filterable product table with KPI cards for units, low / out of stock and total value, status badges, and inline +1 / −1 quick-stock actions.
 
-![Inventory](assets/walkthrough/03-inventory.png)
+![Inventory](assets/walkthrough/04-inventory.png)
 
 ### Part Types — matrix stock
 Every model × part-type × colour combination, priced and counted, with a frozen model column, per-part-type value totals and instant Low / Out / Reorder filters.
 
-![Part types matrix](assets/walkthrough/04-part-types.png)
+![Part types matrix](assets/walkthrough/05-part-types.png)
 
 ### Devices — IMEI tracking
-Whole-device inventory by IMEI — a brand × model stock grid by storage, KPIs for in-stock / sold / average battery / stock value, scan-to-sell, reserve and barcode labels.
+Whole-device inventory by IMEI or serial — a brand × model stock grid by storage, KPIs for in-stock / sold / average battery / stock value, scan-to-sell, reserve and barcode labels.
 
-![Devices — IMEI tracking](assets/walkthrough/05-devices.png)
+![Devices — IMEI tracking](assets/walkthrough/06-devices.png)
+
+### Repairs
+Parts consumed at cost, customer deposits collected on intake, and the owner / technician profit split calculated the moment a job closes.
+
+![Repairs](assets/walkthrough/07-repairs.png)
 
 ### Sales & POS
 Cart-based point of sale with a product picker, customer lookup and discounts, automatic PDF receipts, and edit / void that reverses stock automatically.
 
-![Sales and POS](assets/walkthrough/06-sales.png)
+![Sales and POS](assets/walkthrough/08-sales.png)
+
+### Sell History
+Every sale with running profit per line, plus petty-cash in / out entries, and a one-click Close Day report that reconciles the drawer — cash and card counted separately.
+
+![Sell History](assets/walkthrough/09-sell-history.png)
 
 ### Purchase Orders & Suppliers
 A full PO lifecycle from DRAFT → SENT → PARTIAL → RECEIVED that auto stocks-in on receipt, backed by a supplier CRM with cost prices, lead days and ratings.
 
-![Purchase orders](assets/walkthrough/07-purchase-orders.png)
+![Purchase orders](assets/walkthrough/10-purchase-orders.png)
 
 ### Reports
 Fourteen branded PDF reports — inventory, valuation at cost, low stock, transactions, sales, category performance, audit sheets, phone inventory & sold history, expiring stock and barcode labels.
 
-![Reports](assets/walkthrough/08-reports.png)
+![Reports](assets/walkthrough/11-reports.png)
 
 ### Quick Scan & Barcodes
 Quick Scan intercepts any USB barcode scanner with command barcodes (TAKEOUT / INSERT / CONFIRM) for hands-free counting; the built-in generator prints Code128 / EAN labels.
 
-![Quick Scan](assets/walkthrough/09-quick-scan.png)
+![Quick Scan](assets/walkthrough/12-quick-scan.png)
 
 ## 🖥️ System Requirements
 

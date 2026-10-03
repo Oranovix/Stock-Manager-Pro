@@ -290,26 +290,42 @@
 
   <div id="tour"></div>
 
-  <section class="chapter" id="ch-analytics" data-title="Analytics">
+  <section class="chapter" id="ch-home" data-title="Home">
     <div class="chapter-grid">
       <div>
         <p class="chapter-no">THE TOUR — 01</p>
         <h2>Open to the numbers that matter, not a blank screen.</h2>
         <p class="chapter-desc">
-          Stock value at cost, revenue and transactions, a stock-health donut and a
-          brand × part-type valuation pivot — every figure computed live off the UI
-          thread, never a spreadsheet export someone forgot to update.
+          Today's revenue, profit and sales against yesterday, a 7-day trend, and a
+          ranked list of what needs attention — low stock, devices ready for pickup and
+          repairs waiting — the moment you open the shop.
         </p>
-        <span class="chapter-tag">● Analytics</span>
+        <span class="chapter-tag">● Home</span>
       </div>
-      <div class="shot"><img src="assets/scr-analytics.png" alt="Analytics dashboard with KPI cards, stock-health donut and value-by-brand bars"></div>
+      <div class="shot"><img src="assets/scr-home.png" alt="Home dashboard with today's KPIs and needs-attention cards"></div>
     </div>
   </section>
 
-  <section class="chapter reverse" id="ch-inventory" data-title="Inventory">
+  <section class="chapter reverse" id="ch-counter" data-title="Counter">
     <div class="chapter-grid">
       <div>
         <p class="chapter-no">02</p>
+        <h2>One counter for the whole transaction, whatever it is.</h2>
+        <p class="chapter-desc">
+          Sell, book stock in or out, run a stocktake or process a refund — all behind
+          one scan bar, with a live cart, cash / card / split payment and a part-type
+          chip filter for the busy rush.
+        </p>
+        <span class="chapter-tag">● Counter</span>
+      </div>
+      <div class="shot"><img src="assets/scr-counter.png" alt="Counter workstation with product grid and cart"></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-inventory" data-title="Inventory">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">03</p>
         <h2>Every product, searchable and priced, with stock at a glance.</h2>
         <p class="chapter-desc">
           A fast, filterable product table with KPI cards for units, low and out-of-stock
@@ -322,10 +338,10 @@
     </div>
   </section>
 
-  <section class="chapter" id="ch-matrix" data-title="Part Types">
+  <section class="chapter reverse" id="ch-matrix" data-title="Part Types">
     <div class="chapter-grid">
       <div>
-        <p class="chapter-no">03</p>
+        <p class="chapter-no">04</p>
         <h2>Thousands of parts, one screen that still feels fast.</h2>
         <p class="chapter-desc">
           Every model × part-type × colour combination, priced and counted, with a
@@ -338,26 +354,42 @@
     </div>
   </section>
 
-  <section class="chapter reverse" id="ch-devices" data-title="Devices">
+  <section class="chapter" id="ch-devices" data-title="Devices">
     <div class="chapter-grid">
       <div>
-        <p class="chapter-no">04</p>
-        <h2>Every phone tracked individually, by IMEI.</h2>
+        <p class="chapter-no">05</p>
+        <h2>Every phone, tablet and laptop, tracked by serial.</h2>
         <p class="chapter-desc">
-          Whole-device inventory by IMEI — a brand × model stock grid by storage, KPIs for
-          total, in stock, sold, average battery and stock value, scan-to-sell, reserve,
-          barcode labels and a full sold history.
+          Whole-device inventory by IMEI or serial — a brand × model stock grid by
+          storage, KPIs for in stock, sold, average battery and stock value, scan-to-sell,
+          reserve, barcode labels and a full sold history.
         </p>
-        <span class="chapter-tag">● Devices (IMEI)</span>
+        <span class="chapter-tag">● Devices</span>
       </div>
-      <div class="shot"><img src="assets/scr-phones.png" alt="Devices page with brand and model IMEI stock breakdown"></div>
+      <div class="shot"><img src="assets/scr-phones.png" alt="Devices page with brand and model stock breakdown by IMEI"></div>
+    </div>
+  </section>
+
+  <section class="chapter reverse" id="ch-repairs" data-title="Repairs">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">06</p>
+        <h2>Know what a repair actually earned — automatically.</h2>
+        <p class="chapter-desc">
+          Parts consumed at cost, customer deposits collected on intake, and the
+          owner / technician profit split calculated the moment a job closes. No side
+          notebook, no end-of-month guesswork.
+        </p>
+        <span class="chapter-tag">● Repairs</span>
+      </div>
+      <div class="shot"><img src="assets/scr-repairs.png" alt="Repairs log with profit split and job status"></div>
     </div>
   </section>
 
   <section class="chapter" id="ch-sales" data-title="Sales &amp; POS">
     <div class="chapter-grid">
       <div>
-        <p class="chapter-no">05</p>
+        <p class="chapter-no">07</p>
         <h2>A real point of sale, with receipts and stock reversal.</h2>
         <p class="chapter-desc">
           Cart-based POS with a product picker, customer lookup and discounts, automatic
@@ -366,14 +398,30 @@
         </p>
         <span class="chapter-tag">● Sales / POS</span>
       </div>
-      <div class="shot"><img src="assets/scr-sales.png" alt="Sales and POS screen with cart, product picker and customer lookup"></div>
+      <div class="shot"><img src="assets/scr-sales.png" alt="Sales and POS screen with sales list and totals"></div>
     </div>
   </section>
 
-  <section class="chapter reverse" id="ch-purchasing" data-title="Purchasing">
+  <section class="chapter reverse" id="ch-history" data-title="Sell History">
     <div class="chapter-grid">
       <div>
-        <p class="chapter-no">06</p>
+        <p class="chapter-no">08</p>
+        <h2>One feed for everything sold today — parts and devices alike.</h2>
+        <p class="chapter-desc">
+          Every sale with running profit per line, plus petty-cash in / out entries — and
+          a one-click Close Day report that reconciles the drawer to the cent, cash and
+          card counted separately.
+        </p>
+        <span class="chapter-tag">● Sell History</span>
+      </div>
+      <div class="shot"><img src="assets/scr-sell-history.png" alt="Sell History feed with revenue and profit totals"></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-purchasing" data-title="Purchasing">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">09</p>
         <h2>Purchase orders that stock themselves in on receipt.</h2>
         <p class="chapter-desc">
           A full PO lifecycle from DRAFT through SENT → PARTIAL → RECEIVED that auto
@@ -386,15 +434,15 @@
     </div>
   </section>
 
-  <section class="chapter" id="ch-reports" data-title="Reports">
+  <section class="chapter reverse" id="ch-reports" data-title="Reports">
     <div class="chapter-grid">
       <div>
-        <p class="chapter-no">07</p>
+        <p class="chapter-no">10</p>
         <h2>Fourteen reports, one click away, always on brand.</h2>
         <p class="chapter-desc">
           Inventory, valuation at cost, low stock, transactions, sales, category
-          performance, audit sheets, phone inventory and sold history, expiring stock and
-          barcode labels — branded PDFs ready to print or send.
+          performance, audit sheets, phone inventory and sold history, expiring and dead
+          stock and barcode labels — branded PDFs ready to print or send.
         </p>
         <span class="chapter-tag">● Reports</span>
       </div>
@@ -402,10 +450,10 @@
     </div>
   </section>
 
-  <section class="chapter reverse" id="ch-scan" data-title="Quick Scan">
+  <section class="chapter" id="ch-scan" data-title="Quick Scan">
     <div class="chapter-grid">
       <div>
-        <p class="chapter-no">08</p>
+        <p class="chapter-no">11</p>
         <h2>Hands-free stock counting with any USB scanner.</h2>
         <p class="chapter-desc">
           Quick Scan intercepts any USB barcode scanner with command barcodes
