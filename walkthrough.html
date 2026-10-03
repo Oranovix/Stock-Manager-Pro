@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stock Manager Pro — Product Tour</title>
+<meta name="description" content="A guided tour of Stock Manager Pro — inventory, matrix stock, IMEI device tracking, POS, purchase orders and 14 branded PDF reports, in one offline-first Windows app.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@700;800;900&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+  /* Layout: a one-page "day in the shop" scroll — hero, then eight chapters
+     that alternate text/screenshot sides in workflow order, closing on a
+     feature grid and a plain CTA. Deliberately single dark theme — this is
+     the app's own Pro Dark identity, carried into its marketing page. */
+  :root{
+    --bg:#0A0F0C;
+    --surface:#121815;
+    --surface-2:#171F1B;
+    --border:#232C27;
+    --border-soft:#1B2320;
+    --text:#EDF2EC;
+    --text-dim:#8FA097;
+    --text-faint:#5E6F66;
+    --accent:#27D496;
+    --accent-strong:#12B77D;
+    --accent-soft:rgba(39,212,150,0.14);
+    --accent-glow:rgba(39,212,150,0.30);
+    --gold:#F2B84B;
+    color-scheme: dark;
+  }
+  *{box-sizing:border-box;}
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:"IBM Plex Sans", system-ui, sans-serif;
+    overflow-x:hidden;
+  }
+  img{ max-width:100%; }
+  .wrap{ max-width:1180px; margin:0 auto; padding-inline:24px; }
+
+  h1,h2,h3{
+    font-family:"Archivo", system-ui, sans-serif;
+    text-wrap:balance;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  a{ color:var(--accent); }
+  ::selection{ background:var(--accent-soft); color:var(--text); }
+
+  /* ── top bar ─────────────────────────────────────────────────────── */
+  .topbar{
+    position:sticky; top:0; z-index:40;
+    background:rgba(10,15,12,0.82);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .topbar-inner{
+    max-width:1180px; margin:0 auto; padding:14px 24px;
+    display:flex; align-items:center; justify-content:space-between; gap:16px;
+  }
+  .brand{ display:flex; align-items:center; gap:10px; }
+  .brand-logo{
+    width:26px; height:26px; border-radius:7px;
+    display:block; flex:none;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.06) inset;
+  }
+  .brand-name{
+    font-family:"Archivo", sans-serif; font-weight:800; font-size:15px;
+    letter-spacing:-0.01em;
+  }
+  .topnav{ display:flex; gap:22px; }
+  .topnav a{
+    font-size:12.5px; color:var(--text-dim); text-decoration:none;
+    font-weight:500; letter-spacing:0.01em;
+  }
+  .topnav a:hover{ color:var(--text); }
+  @media (max-width:640px){ .topnav{ display:none; } }
+
+  /* ── progress rail ───────────────────────────────────────────────── */
+  .rail{
+    position:fixed; right:22px; top:50%; transform:translateY(-50%);
+    z-index:30; display:flex; flex-direction:column; gap:10px;
+  }
+  .rail button{
+    width:8px; height:8px; border-radius:50%;
+    background:var(--border); border:none; cursor:pointer; padding:0;
+    transition:background 0.2s, transform 0.2s;
+  }
+  .rail button[aria-current="true"]{ background:var(--accent); transform:scale(1.35); }
+  @media (max-width:900px){ .rail{ display:none; } }
+
+  /* ── hero ────────────────────────────────────────────────────────── */
+  .hero{
+    padding:76px 0 40px;
+    position:relative;
+  }
+  .hero-lockup{
+    display:flex; align-items:center; gap:13px; margin-bottom:26px;
+  }
+  .hero-lockup img{
+    width:46px; height:46px; border-radius:11px; display:block; flex:none;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.06) inset,
+               0 10px 26px -12px var(--accent-glow);
+  }
+  .hero-lockup span{
+    font-family:"Archivo", sans-serif; font-weight:800; font-size:19px;
+    letter-spacing:-0.01em; color:var(--text);
+  }
+  .hero-eyebrow{
+    font-family:"IBM Plex Mono", monospace;
+    font-size:12.5px; letter-spacing:0.11em; text-transform:uppercase;
+    color:var(--accent); font-weight:500; margin-bottom:16px;
+  }
+  .hero h1{
+    font-size:clamp(34px, 6vw, 58px);
+    line-height:1.03; font-weight:900;
+    max-width:16ch;
+  }
+  .hero h1 em{
+    font-style:normal; color:var(--accent);
+  }
+  .hero-sub{
+    margin-top:20px; font-size:17px; line-height:1.6; color:var(--text-dim);
+    max-width:56ch;
+  }
+  .hero-stats{
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:28px;
+  }
+  .stat-chip{
+    font-family:"IBM Plex Mono", monospace; font-size:12.5px;
+    border:1px solid var(--border); border-radius:999px;
+    padding:8px 14px; color:var(--text-dim); background:var(--surface);
+  }
+  .stat-chip b{ color:var(--text); font-weight:600; }
+
+  .hero-frame{
+    margin-top:52px; position:relative;
+  }
+  .hero-frame::before{
+    content:""; position:absolute; inset:-60px -10% -10%;
+    background:radial-gradient(ellipse at 50% 20%, var(--accent-glow), transparent 60%);
+    filter:blur(10px); opacity:0.5; z-index:0;
+  }
+  .shot{
+    position:relative; z-index:1;
+    border-radius:14px; overflow:hidden;
+    border:1px solid var(--border);
+    box-shadow:0 30px 70px -20px rgba(0,0,0,0.65), 0 0 0 1px rgba(255,255,255,0.03) inset;
+    background:var(--surface);
+  }
+  .shot img{ display:block; width:100%; height:auto; }
+
+  /* ── chapters ────────────────────────────────────────────────────── */
+  .chapter{
+    padding:88px 0;
+    border-top:1px solid var(--border-soft);
+    scroll-margin-top:70px;
+  }
+  .chapter-grid{
+    display:grid; grid-template-columns:1fr 1.15fr; gap:56px; align-items:center;
+  }
+  .chapter.reverse .chapter-grid{ direction:rtl; }
+  .chapter.reverse .chapter-grid > *{ direction:ltr; }
+  @media (max-width:860px){
+    .chapter-grid{ grid-template-columns:1fr; gap:32px; }
+    .chapter.reverse .chapter-grid{ direction:ltr; }
+    .chapter{ padding:56px 0; }
+  }
+
+  .chapter-no{
+    font-family:"IBM Plex Mono", monospace; font-size:12.5px;
+    color:var(--text-faint); letter-spacing:0.08em; margin-bottom:14px;
+  }
+  .chapter h2{ font-size:clamp(24px, 3.4vw, 32px); font-weight:800; line-height:1.15; }
+  .chapter-desc{
+    margin-top:14px; font-size:15.5px; line-height:1.65; color:var(--text-dim);
+    max-width:46ch;
+  }
+  .chapter-tag{
+    display:inline-flex; align-items:center; gap:6px;
+    font-family:"IBM Plex Mono", monospace; font-size:11px;
+    color:var(--accent); background:var(--accent-soft);
+    border-radius:6px; padding:4px 9px; margin-top:18px;
+    letter-spacing:0.02em;
+  }
+  .chapter .shot{ border-radius:12px; }
+  .chapter .shot::after{
+    content:""; position:absolute; inset:0; border-radius:12px;
+    box-shadow:0 0 0 1px rgba(255,255,255,0.02) inset;
+  }
+  .chapter .shot{ position:relative; }
+
+  /* ── feature grid ────────────────────────────────────────────────── */
+  .features{
+    padding:88px 0; border-top:1px solid var(--border-soft);
+  }
+  .features-head{ max-width:52ch; margin-bottom:44px; }
+  .features-head .hero-eyebrow{ margin-bottom:14px; }
+  .features-head h2{ font-size:clamp(26px,3.6vw,36px); font-weight:800; }
+  .feat-grid{
+    display:grid; grid-template-columns:repeat(3, 1fr); gap:2px;
+    background:var(--border-soft); border:1px solid var(--border-soft);
+    border-radius:14px; overflow:hidden;
+  }
+  @media (max-width:760px){ .feat-grid{ grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:480px){ .feat-grid{ grid-template-columns:1fr; } }
+  .feat{
+    background:var(--surface); padding:26px 24px;
+  }
+  .feat h3{
+    font-size:15px; font-weight:700; margin-bottom:8px;
+    display:flex; align-items:center; gap:9px;
+  }
+  .feat-dot{ width:7px; height:7px; border-radius:50%; background:var(--accent); flex:none; }
+  .feat p{ font-size:13px; line-height:1.55; color:var(--text-dim); margin:0; }
+
+  /* ── cta footer ──────────────────────────────────────────────────── */
+  .cta{
+    padding:90px 0 70px; border-top:1px solid var(--border-soft);
+    text-align:center;
+  }
+  .cta h2{
+    font-size:clamp(28px,4.6vw,44px); font-weight:900; max-width:18ch; margin:0 auto;
+  }
+  .cta h2 em{ font-style:normal; color:var(--accent); }
+  .cta-sub{
+    margin:18px auto 0; max-width:48ch; color:var(--text-dim); font-size:15.5px; line-height:1.6;
+  }
+  .cta-chips{
+    display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:30px;
+  }
+
+  footer{
+    border-top:1px solid var(--border-soft);
+    padding-block:26px;
+    display:flex; justify-content:space-between; align-items:center;
+    flex-wrap:wrap; gap:10px;
+    font-size:12px; color:var(--text-faint);
+  }
+  footer .brand{ opacity:0.8; }
+
+  [hidden]{ display:none !important; }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="brand">
+      <img class="brand-logo" src="assets/icon_cube.png" alt="Stock Manager Pro logo" width="26" height="26">
+      <span class="brand-name">Stock Manager Pro</span>
+    </div>
+    <nav class="topnav">
+      <a href="#tour">The tour</a>
+      <a href="#features">Features</a>
+      <a href="#get-it">Get it</a>
+    </nav>
+  </div>
+</div>
+
+<nav class="rail" id="rail" aria-label="Section progress"></nav>
+
+<div class="wrap">
+
+  <section class="hero" id="top">
+    <div class="hero-lockup">
+      <img src="assets/icon_cube.png" alt="Stock Manager Pro logo">
+      <span>Stock Manager Pro</span>
+    </div>
+    <p class="hero-eyebrow">Windows · Offline-first · EN / DE / AR</p>
+    <h1>Know exactly what's in stock, what it's worth, and what sold today.</h1>
+    <p class="hero-sub">
+      Stock Manager Pro is a professional offline-first inventory manager for repair
+      shops, retail stores and warehouses — matrix stock, IMEI device tracking, a full
+      POS, purchase orders and 14 branded PDF reports, in one Windows app with no server
+      and no subscription.
+    </p>
+    <div class="hero-stats">
+      <span class="stat-chip">Version <b data-smp-version>2.18.0</b></span>
+      <span class="stat-chip"><b>14</b> branded PDF reports</span>
+      <span class="stat-chip"><b>4</b> themes · <b>3</b> languages</span>
+      <span class="stat-chip">Offline-first, cloud sync optional</span>
+    </div>
+    <div class="hero-frame">
+      <div class="shot"><img src="assets/scr-dashboard.png" alt="Stock Manager Pro analytics dashboard"></div>
+    </div>
+  </section>
+
+  <div id="tour"></div>
+
+  <section class="chapter" id="ch-analytics" data-title="Analytics">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">THE TOUR — 01</p>
+        <h2>Open to the numbers that matter, not a blank screen.</h2>
+        <p class="chapter-desc">
+          Stock value at cost, revenue and transactions, a stock-health donut and a
+          brand × part-type valuation pivot — every figure computed live off the UI
+          thread, never a spreadsheet export someone forgot to update.
+        </p>
+        <span class="chapter-tag">● Analytics</span>
+      </div>
+      <div class="shot"><img src="assets/scr-analytics.png" alt="Analytics dashboard with KPI cards, stock-health donut and value-by-brand bars"></div>
+    </div>
+  </section>
+
+  <section class="chapter reverse" id="ch-inventory" data-title="Inventory">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">02</p>
+        <h2>Every product, searchable and priced, with stock at a glance.</h2>
+        <p class="chapter-desc">
+          A fast, filterable product table with KPI cards for units, low and out-of-stock
+          and total inventory value, status badges, and inline +1 / −1 quick-stock
+          actions — no dialog for the everyday adjustment.
+        </p>
+        <span class="chapter-tag">● Inventory</span>
+      </div>
+      <div class="shot"><img src="assets/scr-inventory-v2.png" alt="Inventory table with KPI cards, status badges and quick-stock actions"></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-matrix" data-title="Part Types">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">03</p>
+        <h2>Thousands of parts, one screen that still feels fast.</h2>
+        <p class="chapter-desc">
+          Every model × part-type × colour combination, priced and counted, with a
+          frozen model column, per-part-type value totals and instant Low / Out / Reorder
+          filters — the spreadsheet workflow shops already know, minus the spreadsheet.
+        </p>
+        <span class="chapter-tag">● Part Types</span>
+      </div>
+      <div class="shot"><img src="assets/scr-displays.png" alt="Part types matrix showing model by part type stock grid"></div>
+    </div>
+  </section>
+
+  <section class="chapter reverse" id="ch-devices" data-title="Devices">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">04</p>
+        <h2>Every phone tracked individually, by IMEI.</h2>
+        <p class="chapter-desc">
+          Whole-device inventory by IMEI — a brand × model stock grid by storage, KPIs for
+          total, in stock, sold, average battery and stock value, scan-to-sell, reserve,
+          barcode labels and a full sold history.
+        </p>
+        <span class="chapter-tag">● Devices (IMEI)</span>
+      </div>
+      <div class="shot"><img src="assets/scr-phones.png" alt="Devices page with brand and model IMEI stock breakdown"></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-sales" data-title="Sales &amp; POS">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">05</p>
+        <h2>A real point of sale, with receipts and stock reversal.</h2>
+        <p class="chapter-desc">
+          Cart-based POS with a product picker, customer lookup and discounts, automatic
+          PDF receipts, and edit / void that reverses stock automatically — the counter
+          and the ledger always agree.
+        </p>
+        <span class="chapter-tag">● Sales / POS</span>
+      </div>
+      <div class="shot"><img src="assets/scr-sales.png" alt="Sales and POS screen with cart, product picker and customer lookup"></div>
+    </div>
+  </section>
+
+  <section class="chapter reverse" id="ch-purchasing" data-title="Purchasing">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">06</p>
+        <h2>Purchase orders that stock themselves in on receipt.</h2>
+        <p class="chapter-desc">
+          A full PO lifecycle from DRAFT through SENT → PARTIAL → RECEIVED that auto
+          stocks-in on receipt, backed by a supplier CRM with cost prices, lead days,
+          ratings and linked inventory items.
+        </p>
+        <span class="chapter-tag">● Purchase Orders</span>
+      </div>
+      <div class="shot"><img src="assets/scr-purchase-orders.png" alt="Purchase orders list with DRAFT to RECEIVED lifecycle"></div>
+    </div>
+  </section>
+
+  <section class="chapter" id="ch-reports" data-title="Reports">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">07</p>
+        <h2>Fourteen reports, one click away, always on brand.</h2>
+        <p class="chapter-desc">
+          Inventory, valuation at cost, low stock, transactions, sales, category
+          performance, audit sheets, phone inventory and sold history, expiring stock and
+          barcode labels — branded PDFs ready to print or send.
+        </p>
+        <span class="chapter-tag">● Reports</span>
+      </div>
+      <div class="shot"><img src="assets/scr-reports.png" alt="Reports screen with the full list of PDF report types"></div>
+    </div>
+  </section>
+
+  <section class="chapter reverse" id="ch-scan" data-title="Quick Scan">
+    <div class="chapter-grid">
+      <div>
+        <p class="chapter-no">08</p>
+        <h2>Hands-free stock counting with any USB scanner.</h2>
+        <p class="chapter-desc">
+          Quick Scan intercepts any USB barcode scanner with command barcodes
+          (TAKEOUT / INSERT / CONFIRM) for receiving, selling and stock checks — and the
+          built-in generator prints Code128 / EAN labels for new stock.
+        </p>
+        <span class="chapter-tag">● Quick Scan &amp; Barcodes</span>
+      </div>
+      <div class="shot"><img src="assets/scr-quickscan.png" alt="Quick Scan workflow with command barcodes for hands-free counting"></div>
+    </div>
+  </section>
+
+  <section class="features" id="features">
+    <div class="features-head">
+      <p class="hero-eyebrow">Underneath it all</p>
+      <h2>The parts that don't show up in a screenshot.</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat"><h3><span class="feat-dot"></span>Multilingual</h3><p>English, German and Arabic with live switching and full right-to-left layout — not just translated labels.</p></div>
+      <div class="feat"><h3><span class="feat-dot"></span>Four themes</h3><p>Dark, Light, Pro Dark and Pro Light. Switch anytime; every screen updates instantly.</p></div>
+      <div class="feat"><h3><span class="feat-dot"></span>Offline-first</h3><p>Runs on local SQLite with no internet required. Cloud sync across PCs is there when you want it, never required.</p></div>
+      <div class="feat"><h3><span class="feat-dot"></span>Auto-backup</h3><p>Scheduled backups with configurable retention, so a bad afternoon never costs a year of records.</p></div>
+      <div class="feat"><h3><span class="feat-dot"></span>Undo / redo</h3><p>Reverse a stock movement or a status change without digging through logs to fix a mistake.</p></div>
+      <div class="feat"><h3><span class="feat-dot"></span>Built to last</h3><p>A tested codebase with an automated release pipeline — updates ship with confidence, not crossed fingers.</p></div>
+    </div>
+  </section>
+
+  <section class="cta" id="get-it">
+    <h2>Stop running the shop from <em>memory</em>.</h2>
+    <p class="cta-sub">
+      Stock Manager Pro is built for repair shops that live and die by their numbers —
+      parts, devices, repairs and cash, all in one place.
+    </p>
+    <div class="cta-chips">
+      <span class="stat-chip">Windows 10 / 11 (64-bit)</span>
+      <span class="stat-chip">512 MB RAM minimum</span>
+      <span class="stat-chip">No internet required</span>
+    </div>
+  </section>
+
+  <footer>
+    <span class="brand">
+      <img class="brand-logo" src="assets/icon_cube.png" alt="" width="22" height="22" style="width:22px;height:22px;">
+      <span class="brand-name" style="font-size:13px;">Stock Manager Pro</span>
+    </span>
+    <span>Professional inventory, POS &amp; repair management for Windows · v<span data-smp-version>2.18.0</span></span>
+  </footer>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var sections = Array.prototype.slice.call(document.querySelectorAll(".chapter[data-title]"));
+  var rail = document.getElementById("rail");
+  if (!sections.length || !rail) return;
+
+  sections.forEach(function(sec, i){
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.title = sec.dataset.title;
+    btn.setAttribute("aria-label", "Jump to " + sec.dataset.title);
+    btn.addEventListener("click", function(){
+      sec.scrollIntoView({behavior: "smooth", block: "start"});
+    });
+    rail.appendChild(btn);
+  });
+  var dots = Array.prototype.slice.call(rail.children);
+
+  if ("IntersectionObserver" in window){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        var idx = sections.indexOf(entry.target);
+        if (idx === -1) return;
+        if (entry.isIntersecting){
+          dots.forEach(function(d){ d.removeAttribute("aria-current"); });
+          dots[idx].setAttribute("aria-current", "true");
+        }
+      });
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    sections.forEach(function(sec){ obs.observe(sec); });
+  }
+
+  document.querySelectorAll('.topnav a[href^="#"]').forEach(function(a){
+    a.addEventListener("click", function(e){
+      var el = document.querySelector(a.getAttribute("href"));
+      if (el){ e.preventDefault(); el.scrollIntoView({behavior:"smooth", block:"start"}); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
