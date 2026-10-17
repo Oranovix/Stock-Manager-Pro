@@ -14,6 +14,32 @@ So the number itself tells you what kind of release it is: a patch is safe to in
 
 ## [Unreleased]
 
+## [2.19.0] - 2026-10-17
+
+
+### Added — Part types: brand scope
+- Every part type can now say **which brands it applies to** (Admin → Part Types → Add / Edit: *All brands* or a set of brands). The matrix only creates rows for those brands, so a new Samsung-only flex no longer appears under every iPhone, and the models list for a scoped part type shows only its brands. Narrowing a scope later removes the empty rows of the other brands; rows that still hold stock are never touched, and a model you ticked in by hand stays in.
+- **Shared part types get per-brand default colours.** When a part type covers several brands, each default colour can apply to *all* of them or to chosen brands only (Admin → Part Types → + Add Color). A Samsung model then gets the Samsung defaults and a Xiaomi model the Xiaomi ones — no more union of every brand's colours on every model. The models list shows each model's own defaults, and copying or moving a part type setup carries the per-brand limits along.
+
+### Fixed — A removed colour with sales history no longer stays in the matrix
+- Removing a colour (or a model) whose rows already had sales behind them silently left those rows in the matrix forever — they cannot be deleted without losing the history. Such rows are now **hidden** instead: they vanish from the matrix (their history, barcodes and reports stay intact) and come back automatically if the colour is added again.
+
+### Fixed — Editing one model's colours no longer leaks into other brands' part types
+- Changing the colours of a Samsung model (Galaxy A55) in Displays wrote those colours — and created rows — for **every** part type in the category, including the iPhone-only display types, so iPhone displays appeared under Samsung and the leak then spread to every later colour edit on that brand. Colour edits now reach only part types the model is actually in, both colour dialogs let you choose *this part type only* or *all part types this model has in this category*, and the matrix cleans up already-leaked empty rows and stale colour markers on its next pass.
+
+### Fixed — Error reports: four kinds of noise, one real crash (from Sentry)
+- **Suppliers:** adding a supplier with a rating crashed (`unexpected keyword argument 'rating'`), and on cloud-synced shops the suppliers page's refresh failed every time with *duplicate column name: rating* because it re-ran a schema change on each load. Both fixed.
+- A fresh database's very first settings read, a zero quantity typed at Stock In/Out, and a sync that failed because the internet was down were all reported as errors; they are ordinary situations now (the app already tells you on screen) and no longer flood the error reports.
+
+### Fixed — A second click no longer ends a copy that is still starting
+- Starting the app and clicking the icon again while the first copy was still loading could **end the first copy** after 25 seconds — on a slow start (the cloud replica alone can take longer than that) the second click treated it as hung. The second copy now recognises a copy that is still starting, shows a small "already starting, please wait" notice and simply hands over to it when its window appears. Only a copy that has had no window for ten minutes is treated as hung — and a copy waiting at the login (PIN) prompt now counts as running.
+
+### Changed — Part types: "move" now moves the items themselves
+- In **Copy setup from…**, the move option used to shift only the *quantities* to fresh rows in the new part type — which left the **barcodes, prices and history behind** on the old rows. It now moves the **items themselves**: stock, barcodes (including additional barcodes), prices, notes and the full transaction and sales history all travel to the new part type, and the old part type stops listing those models. Empty placeholder rows the new part type already had are merged in automatically, so a split that was started with the old behaviour is completed correctly by running the move again.
+
+### Fixed — Matrix (All brands): brand tables no longer jump to the top
+- With **All brands** selected, each brand has its own scrolling table. After an operation the table you were working in snapped back to its first row — only the page position and the horizontal offsets were being restored, not each brand table's own vertical position. Every brand table now keeps its place.
+
 ## [2.18.0] - 2026-09-19
 
 
